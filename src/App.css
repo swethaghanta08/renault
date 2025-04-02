@@ -1,0 +1,181 @@
+.width {
+  max-width: 1440px;
+}
+
+@media (min-width: 376px) and (max-width: 425px) {
+  .image1 {
+    width: 177px;
+    height: 118px;
+
+
+  }
+  
+
+  .image2 {
+    width: 177px;
+    height: 158px;
+
+
+
+  }
+
+  .image3 {
+    width: 197px;
+    height: 280px;
+  }
+
+  .paragraph {
+    width: 400px;
+  }
+
+  .padding {
+    padding: 5px;
+    padding-right:5px;
+  }
+ 
+
+  .aboutcontentbox {
+    margin-left: 100px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 323px) and (max-width: 375px) {
+  .image11 {
+    width: 170px;
+    height: 104px;
+  }
+
+  .image22 {
+    width: 170px;
+    height: 141px;
+  }
+
+  .image33 {
+    width: 190px;
+    height: 249px;
+  }
+
+  .paragraph1 {
+    width: 335px;
+  }
+ 
+
+  .aboutcontentbox2 {
+    margin-left: 100px;
+    margin-bottom: 40px;
+
+  }
+
+
+
+
+}
+
+@media (min-width: 426px) and (max-width: 473px) {
+  .yearsimage1{
+    width: 190px;
+
+  }
+  .yearsimage2{
+    width: 190px;
+
+  }
+  .yearsimage3{
+    width: 290px;
+    height: 270px;
+
+  }
+}
+
+@media (min-width: 474px) and (max-width: 520px) {
+  .yearsimage1{
+    width: 200px;
+
+  }
+  .yearsimage2{
+    width: 200px;
+
+  }
+  .yearsimage3{
+    width: 270px;
+    height: 280px;
+
+  }
+}
+@media (min-width: 521px) and (max-width: 570px) {
+  .yearsimage1{
+    width: 210px;
+
+  }
+  .yearsimage2{
+    width: 210px;
+
+  }
+  .yearsimage3{
+    width: 270px;
+    height: 280px;
+
+  }
+  
+}
+
+@media (min-width: 571px) and (max-width: 620px) {
+  .yearsimage1{
+    width: 220px;
+
+  }
+  .yearsimage2{
+    width: 220px;
+
+  }
+  .yearsimage3{
+    width: 270px;
+    height: 300px;
+
+  }
+}
+@media (min-width: 621px) and (max-width: 670px) {
+  .yearsimage1{
+    width: 260px;
+
+  }
+  .yearsimage2{
+    width: 260px;
+
+  }
+  .yearsimage3{
+    width: 270px;
+    height: 340px;
+
+  }
+}
+@media (min-width: 671px) and (max-width: 767px) {
+  .yearsimage1{
+    width: 300px;
+
+  }
+  .yearsimage2{
+    width: 300px;
+
+  }
+  .yearsimage3{
+    width: 320px;
+    height: 380px;
+
+  }
+}
+@media screen and (min-width: 1441px) {
+  .carousel-right-button {
+      right: 40px !important; /* Adjust the button position for wider screens */
+  }
+}
+
+
+
+
+
+
+
+
+
