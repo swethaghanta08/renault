@@ -10,11 +10,11 @@ const ContactSection = () => {
   }
 
   return (
-    <div className="flex flex-col items-center py-12 md:px-8 px-6 lg:px-6 md:py-14 lg:py-20 xl:py-24 bg-white">
+    <div className="flex flex-col items-center py-12 mt-[-60px] md:mt-[-70px] lg:mt-[-90px] xl:mt-[-90px] md:px-8 px-6 lg:px-6 md:py-14 lg:py-20 xl:py-24 bg-white">
       <h3 className="text-[#E4492E] font-['Monda'] text-xl md:text-xl lg:text-2xl xl:text-3xl font-semibold text-center w-full">
         Get in Touch
       </h3>
-      <h2 className="text-black font-['Monda'] px-2 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[40px] md:leading-[48px] lg:leading-[60px] xl:leading-[72px] text-center w-full mt-3 md:mt-3 lg:mt-4 xl:mt-6">
+      <h2 className="text-black font-['Monda'] px-2 text-3xl md:text-4xl lg:text-[28px] lg:leading-[38px] xl:text-[48px] font-bold leading-[40px] md:leading-[48px] lg:leading-[60px] xl:leading-[72px] text-center w-full mt-3 md:mt-3 lg:mt-4 xl:mt-6">
         Contact Us for Expert Assistance
       </h2>
 
@@ -50,11 +50,10 @@ const ContactSection = () => {
             className="w-[48px] h-[48px] md:w-[56px] md:h-[56px] lg:w-[64px] lg:h-[64px] xl:w-[72px] xl:h-[72px]"
           />
           <h3 className="text-white font-['Manrope'] text-xl md:text-xl lg:text-2xl xl:text-3xl font-bold capitalize">
-            Visit Us
+            Office Location
           </h3>
           <p className="text-white w-full md:w-[240px] lg:w-[288px] xl:w-[320px] font-['Manrope'] text-xs md:text-xs lg:text-sm xl:text-base font-medium text-center">
-            Flat No-101, Plot No. 42-43-44. Sri Surayas Vijayas Icon, Balaji Nagar Village Nizampet. Nizampet,
-            Hyderabad. Telangana. India -500090.
+          Flat no -101, Sri Suraya Vijaya Icon, Balaji Nagar, Nizampet Village, Hyderabad. Telangana, India 500090
           </p>
           <button
             onClick={handleSendRequest}

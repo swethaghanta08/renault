@@ -2,10 +2,10 @@ import React from 'react';
 
 const VisitUsSection = () => {
   return (
-    <div className="flex flex-col items-center gap-4 max-w-[1440px] mx-auto p-6">
+    <div className="flex flex-col items-center mb-5 gap-0 max-w-[1440px] mx-auto p-6">
       <p className="text-[#E4492E] font-[Monda] text-[20px] font-semibold">Our Location</p>
       <h1 className="text-black font-[Monda] text-[30px] md:text-[48px] font-bold leading-[60px]">Visit Us Anytime</h1>
-      <p className="text-[#827E7D] font-[Manrope] text-[20px] font-normal leading-[28px] tracking-[0.4px] max-w-[928px]">
+      <p className="text-[#827E7D]    text-[16px] leading-[24px] md:text-[20px] md:leading-[28px] lg:text-[16px] lg:leading-[24px] xl:text-[20px] xl:leading-[28px] mt-3 md:mt-4 font-['Manrope']">
         Find us at our conveniently located office, designed to serve our clients with ease. Whether you're visiting for a consultation or partnership, our doors are always open to welcome you.
       </p>
       <div className="w-full h-[300px] mt-4 md:h-[600px] rounded-lg overflow-hidden">

@@ -28,7 +28,7 @@ const ContactHeroSection = () => {
   }, []);
 
   return (
-    <section className="relative xl:max-w-[1440px] lg:max-w-[1024px] md:max-w-[768px] h-[320px] md:h-[460px] xl:w-[1440px] md:flex-shrink-0 mt-[20px] mx-auto w-full lg:w-[1024px] lg:h-[600px] flex items-center justify-center">
+    <section className="relative  h-[320px] md:h-[460px]  md:flex-shrink-0  mx-auto w-full  lg:h-[600px] flex items-center justify-center">
       {loading ? (
         <Skeleton variant="rectangular" width="100%" height="100%" className="absolute top-0 left-0" />
       ) : (

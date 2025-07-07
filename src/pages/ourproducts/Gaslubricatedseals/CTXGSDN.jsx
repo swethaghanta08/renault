@@ -4,6 +4,7 @@ import { useState } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import Engineeredsealsnavbar from "../Engineeredsealsnavbar/Engineeredsealsnavbar"
+import Gaslubricatedsealsnavbar from "../Gaslubricatedsealsnavbar/Gaslubricatedsealsnavbar"
 
 const CTXGSDN = () => {
   const [activeTab, setActiveTab] = useState(null)
@@ -126,11 +127,11 @@ const CTXGSDN = () => {
         {/* Content Box */}
         <div className="relative z-10 ml-[20px] sm:ml-[40px] mt-[80px] aboutcontentbox2 aboutcontentbox md:mt-[40px] w-[240px] h-[100px] md:w-[442px] md:h-[121px] md:ml-[100px] lg:ml-[240px] lg:h-[155px] lg:w-[605px] xl:ml-[570px] bg-white flex flex-col items-start p-6 sm:p-10 gap-0 shadow-lg">
           {/* Heading */}
-          <h2 className="text-black ml-[-10px] md:mt-[-20px] sm:ml-[-20px] font-monda text-[18px] sm:text-[20px] md:text-[28px] lg:text-[36px] font-bold leading-[24px] sm:leading-[28px] md:leading-[50px] w-[216px] md:w-[402px] lg:w-[502px]">
+          <h2 className="text-black ml-[-10px] md:mt-[-20px] sm:ml-[-20px] font-[Monda] text-[18px] sm:text-[20px] md:text-[28px] lg:text-[36px] font-bold leading-[24px] sm:leading-[28px] md:leading-[50px] w-[216px] md:w-[402px] lg:w-[502px]">
           Engineered Seals
           </h2>
           <div className="flex items-center mt-[-20px] ml-[-10px] sm:ml-[-20px] gap-2 md:mt-[-20px] lg:mt-[-10px]">
-            <h4 className="text-[#CF422A] mt-[30px] xl:mt-[30px] text-[Monda] text-[12px] md:text-[20px] lg:text-[24px] lg:mt-[10px] font-bold leading-normal capitalize">
+            <h4 className="text-[#CF422A] mt-[30px] xl:mt-[30px] font-[Monda] text-[12px] md:text-[20px] lg:text-[24px] lg:mt-[10px] font-bold leading-normal capitalize">
             SBF/SBP
             </h4>
           </div>
@@ -139,7 +140,7 @@ const CTXGSDN = () => {
 
       {/* Navbar Below Hero Section */}
       <div className="max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px]  mx-auto">
-        <Engineeredsealsnavbar/>
+        <Gaslubricatedsealsnavbar/>
       </div>
 
       {/* Product Detail Section */}
@@ -147,7 +148,7 @@ const CTXGSDN = () => {
         <div className="flex flex-col lg:flex-row gap-8 md:gap-16 lg:gap-28">
           {/* Left Side - Product Info */}
           <div className="w-full  lg:pr-8">
-            <h1 className="text-[#CF422A] font-monda text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-bold leading-tight md:leading-[60px] self-stretch mb-6 md:mb-8">
+            <h1 className="text-[#CF422A] font-[Monda] text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-bold leading-tight md:leading-[60px] self-stretch mb-6 md:mb-8">
             SBF/SBP
             </h1>
 

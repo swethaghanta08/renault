@@ -89,13 +89,12 @@ const Footer = () => {
   }
 
   return (
-    <div className="flex flex-col w-full relative">
+    <div className="flex flex-col w-full mt-[-20px] relative">
       {/* Toast Notification */}
       {notification.show && (
         <div
-          className={`fixed top-5 right-5 z-50 px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform translate-y-0 ${
-            notification.type === "success" ? "bg-green-500" : "bg-red-500"
-          }`}
+          className={`fixed top-5 right-5 z-50 px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform translate-y-0 ${notification.type === "success" ? "bg-green-500" : "bg-red-500"
+            }`}
         >
           <div className="flex items-center">
             {notification.type === "success" ? (
@@ -208,12 +207,12 @@ const Footer = () => {
                   >
                     About
                   </li>
-                  <li
+                  {/* <li
                     className="text-black text-sm font-[Manrope] font-medium cursor-pointer"
                     onClick={handleIndustryNavigation}
                   >
                     Industry
-                  </li>
+                  </li> */}
                   <li
                     className="text-black font-[Manrope] text-sm font-medium cursor-pointer"
                     onClick={handleProductsNavigation}
@@ -258,8 +257,7 @@ const Footer = () => {
                 <div className="flex items-start">
                   <img src="/assets/Homepage/footer/location .png" alt="Location" className="w-5 h-5 mr-2 mt-1" />
                   <p className="text-black text-sm font-[Manrope] font-medium">
-                    Flat No-101, Plot No. 42-43-44, Sri Suraya Vijayas Icon, Balaji Nagar Village - Nizampet, Nizampet,
-                    Hyderabad, Telangana, India - 500090
+                    Flat no -101, Sri Suraya Vijaya Icon, Balaji Nagar, Nizampet Village, Hyderabad. Telangana, India 500090
                   </p>
                 </div>
                 <div className="flex items-start">
@@ -287,8 +285,7 @@ const Footer = () => {
                 <div className="flex items-start">
                   <img src="/assets/Homepage/footer/location .png" alt="Location" className="w-6 h-6 mr-3" />
                   <p className="text-black font-[Manrope] text-base font-medium">
-                    Flat No-101, Plot No. 42-43-44, Sri Suraya Vijayas Icon, Balaji Nagar, Nizampet, Hyderabad,
-                    Telangana, India - 500090
+                    Flat no -101, Sri Suraya Vijaya Icon, Balaji Nagar, Nizampet Village, Hyderabad. Telangana, India 500090
                   </p>
                 </div>
                 <div className="flex items-start">
@@ -325,12 +322,12 @@ const Footer = () => {
                 >
                   About
                 </li>
-                <li
+                {/* <li
                   className="text-black font-[Manrope] text-base font-medium cursor-pointer"
                   onClick={handleIndustryNavigation}
                 >
                   Industry
-                </li>
+                </li> */}
                 <li
                   className="text-black font-[Manrope] text-base font-medium cursor-pointer"
                   onClick={handleProductsNavigation}
@@ -388,7 +385,17 @@ const Footer = () => {
       {/* Designed By Techpixe Section - Centered */}
       <div className="w-full bg-[#E4492E]">
         <div className="max-w-[1440px] mx-auto flex justify-center items-center px-4 md:px-16 py-4">
-          <p className="text-white font-[Manrope] text-base md:text-xl font-bold capitalize">Designed By Techpixe</p>
+          <p className="text-white font-[Manrope] text-base md:text-xl font-bold capitalize">
+            Designed and Developed By{" "}
+            <a
+              href="https://techpixe.com" // replace with the actual Techpixe URL if different
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-green-300"
+            >
+              Techpixe
+            </a>
+          </p>
         </div>
       </div>
     </div>

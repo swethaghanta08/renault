@@ -411,14 +411,10 @@ const PPDDualSealsPulpPaper = () => {
                         Stock pumps
                         </p>
                       </li>
-
                     </ul>
                   </div>
                 </div>
               </div>
-           
-
-
             </div>
           </div>
         </div>

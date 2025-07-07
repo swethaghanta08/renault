@@ -1,40 +1,50 @@
-import React, { useEffect, useRef } from 'react'
-import { useLocation } from 'react-router-dom'
-import ContactHeroSection from '../pages/contact/Contactheropage'
-import Letsconnect from '../pages/contact/Letsconnect'
-import VisitUsSection from '../pages/contact/Location'
-import Footer from '../pages/home/Footer'
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import ContactHeroSection from '../pages/contact/Contactheropage';
+import Letsconnect from '../pages/contact/Letsconnect';
+import VisitUsSection from '../pages/contact/Location';
+import Footer from '../pages/home/Footer';
 
 const Contactpage = () => {
   const location = useLocation();
   const letsConnectRef = useRef(null);
-  
+
   useEffect(() => {
-    // Check if we should scroll to the Letsconnect section
     const searchParams = new URLSearchParams(location.search);
     const section = searchParams.get('section');
-    
+
     if (section === 'letsconnect' && letsConnectRef.current) {
-      // Add a small delay to ensure the component is fully rendered
       setTimeout(() => {
-        letsConnectRef.current.scrollIntoView({ 
+        letsConnectRef.current.scrollIntoView({
           behavior: 'smooth',
-          block: 'start'
+          block: 'start',
         });
       }, 100);
     }
   }, [location]);
 
   return (
-    <div>
-      <ContactHeroSection/>
-      <div ref={letsConnectRef}>
-        <Letsconnect/>
-      </div>
-      <VisitUsSection/>
-      <Footer/>
-    </div>
-  )
-}
+    <>
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Contact Renault Engineers | Mechanical Seal Experts in Hyderabad</title>
+        <meta
+          name="description"
+          content="Get in touch with Renault Engineers for custom mechanical seals, engineered sealing solutions, and expert technical support. We’re here to help!"
+        />
+        <link rel="canonical" href="https://renaultengineers.com/contact" />
+      </Helmet>
 
-export default Contactpage
+      {/* Page Sections */}
+      <ContactHeroSection />
+      <div ref={letsConnectRef}>
+        <Letsconnect />
+      </div>
+      <VisitUsSection />
+      <Footer />
+    </>
+  );
+};
+
+export default Contactpage;

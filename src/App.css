@@ -2,7 +2,7 @@
   max-width: 1440px;
 }
 
-@media (min-width: 376px) and (max-width: 425px) {
+@media (min-width: 415px) and (max-width: 425px) {
   .image1 {
     width: 177px;
     height: 118px;
@@ -20,8 +20,9 @@
   }
 
   .image3 {
-    width: 197px;
-    height: 280px;
+    width: 80px;
+    height: 165px;
+    margin-left: 105px;
   }
 
   .paragraph {
@@ -38,6 +39,28 @@
     margin-left: 100px;
     margin-bottom: 40px;
   }
+  /* .margin{
+    margin-top:350px ;
+  } */
+   .marginleft{
+    margin-left: -35px;
+    max-width: 425px;
+    padding-left: 39px;
+    /* padding-right: 50px; */
+    
+   }
+   .buttonmarginleft{
+    margin-left:0px ;
+   }
+   .buttonmarginright{
+    margin-right:4px;
+   }
+   .width{
+    width: 300px;
+   }
+   .aboutmarginleft{
+    margin-left:-40px;
+   }
 }
 
 @media (min-width: 323px) and (max-width: 375px) {
@@ -52,8 +75,9 @@
   }
 
   .image33 {
-    width: 190px;
-    height: 249px;
+    width: 100px;
+    height: 185px;
+    margin-left: 80px;
   }
 
   .paragraph1 {
@@ -66,11 +90,40 @@
     margin-bottom: 40px;
 
   }
+  /* .margin{
+    margin-top:380px ;
+  } */
 
-
-
-
+.marginleft{
+  margin-left: -20px;
 }
+ .buttonmarginright{
+  margin-right: 0px;
+ 
+ }
+  .buttonmarginleft{
+    margin-left:0px ;
+   }
+   .width{
+    width: 280px;
+   }
+   .aboutmarginleft{
+    margin-left:-60px;
+   }
+   .marginleft{
+   
+    padding-left: 10px;
+    /* padding-right: 50px; */
+    
+   }
+   .padding{
+    padding-left: 13px;
+    padding-right: 2px;
+   }
+}
+
+
+
 
 @media (min-width: 426px) and (max-width: 473px) {
   .yearsimage1{
@@ -164,12 +217,180 @@
     height: 380px;
 
   }
+
 }
 @media screen and (min-width: 1441px) {
   .carousel-right-button {
       right: 40px !important; /* Adjust the button position for wider screens */
   }
 }
+@media (min-width: 639px) and (max-width: 767px) {
+  .width{
+    width: 300px;
+  }
+  .top{
+    margin-top: 0px;
+  }
+ 
+}
+@media (min-width: 429px) and (max-width: 640px) {
+  .width{
+    width: 340px;
+    /* height:320px; */
+    
+  }
+  .width1{
+    width:200px ;
+    height: 200px;
+    margin-left: 90px;
+  }
+  .width2{
+   margin-left: 185px;
+  }
+  .top{
+    margin-top: 0px;
+  }
+}
+@media (min-width: 413px) and (max-width: 414px) {
+  .image1 {
+    width: 177px;
+    height: 118px;
+
+
+  }
+  
+
+  .image2 {
+    width: 177px;
+    height: 158px;
+
+
+
+  }
+
+  .image3 {
+    width: 80px;
+    height: 165px;
+    margin-left: 105px;
+  }
+
+  .paragraph {
+    width: 400px;
+  }
+
+  .padding {
+    padding: 5px;
+    padding-right:5px;
+  }
+ 
+
+  .aboutcontentbox {
+    margin-left: 100px;
+    margin-bottom: 40px;
+  }
+  /* .margin{
+    margin-top:350px ;
+  } */
+   .marginleft{
+    margin-left: -40px;
+    max-width: 425px;
+    padding-left: 42px;
+    /* padding-right: px; */
+    
+   }
+   .buttonmarginleft{
+    margin-left:0px ;
+   }
+   .buttonmarginright{
+    margin-right:1px;
+   }
+   .width{
+    width: 300px;
+   }
+   .aboutmarginleft{
+    margin-left:-40px;
+   }
+}
+@media (min-width: 400px) and (max-width: 412px) {
+  .image1 {
+    width: 177px;
+    height: 118px;
+
+
+  }
+  
+
+  .image2 {
+    width: 177px;
+    height: 158px;
+
+
+
+  }
+
+  .image3 {
+    width: 80px;
+    height: 165px;
+    margin-left: 105px;
+  }
+
+  .paragraph {
+    width: 400px;
+  }
+
+  .padding {
+    padding: 5px;
+    padding-right:5px;
+  }
+ 
+
+  .aboutcontentbox {
+    margin-left: 100px;
+    margin-bottom: 40px;
+  }
+  /* .margin{
+    margin-top:350px ;
+  } */
+   .marginleft{
+    margin-left: -20px;
+    max-width: 425px;
+    padding-left: 39px;
+    /* padding-right: 50px; */
+    
+   }
+   .buttonmarginleft{
+    margin-left:0px ;
+   }
+   .buttonmarginright{
+    margin-right:10px;
+   }
+   .width{
+    width: 300px;
+   }
+   .aboutmarginleft{
+    margin-left:-40px;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

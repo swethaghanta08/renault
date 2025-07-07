@@ -43,9 +43,9 @@ const Letsconnect = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row items-center xl:ml-[140px] gap-6 max-w-[1440px] mx-auto p-4 md:p-8 lg:p-12">
+    <div className="flex flex-col lg:flex-row items-center  gap-6 max-w-[1440px] mx-auto p-4 md:p-8 lg:p-12">
       {/* Left Side - Contact Info */}
-      <div className="flex flex-col gap-6 w-full lg:w-auto">
+      <div className="flex flex-col gap-2 w-full lg:w-auto">
         <p className="text-[#E4492E] font-[Monda] text-[16px]  md:text-[18px] lg:text-[20px] font-semibold">
           Let's Connect
         </p>
@@ -56,19 +56,19 @@ const Letsconnect = () => {
           Reach out to us for any inquiries, support, or collaboration. Visit our location, give us a call, or drop us an email-we're always ready to assist you with the best solutions.
         </p>
         {/* Visit Us */}
-        <div className="flex flex-col md:flex-row mt-[20px] items-start md:items-center gap-4 md:gap-2">
+        <div className="flex flex-row mt-[20px] items-start md:items-center gap-4 md:gap-2">
           <div className="flex items-center gap-2 bg-[#F7C7BE] p-2">
             <img src="/assets/Contactpage/Letsconnect/location.png" alt="Location" className="w-8 h-8 md:w-12 md:h-10" />
           </div>
           <div className="flex flex-col">
             <p className="text-black font-bold font-[Manrope] text-[16px] leading-normal">Visit Us</p>
-            <p className="text-[#827E7D] text-sm xl:w-[632px] font-[Manrope] md:text-base">
+            <p className="text-[#827E7D] w-[220px] width md:w-auto text-sm xl:w-[632px] font-[Manrope] md:text-base">
               No. Flat No. - 101, Plot No. 42-43-44, Sri Surays Vijayas Icon, Balaji Nagar, Village - Nizampet, Hyderabad. Telangana, India - 500090
             </p>
           </div>
         </div>
         {/* Call Us */}
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-2">
+        <div className="flex flex-row items-start md:items-center gap-4 md:gap-2">
           <div className="flex items-center gap-2 bg-[#F7C7BE] p-2">
             <img src="/assets/Contactpage/Letsconnect/phone.png" alt="Phone" className="w-8 h-8 md:w-9 md:h-9" />
           </div>
@@ -80,7 +80,7 @@ const Letsconnect = () => {
           </div>
         </div>
         {/* Message Us */}
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-2">
+        <div className="flex flex-row items-start md:items-center gap-4 md:gap-2">
           <div className="flex items-center gap-2 bg-[#F7C7BE] p-2">
             <img src="/assets/Contactpage/Letsconnect/navigation.png" alt="Message" className="w-8 h-8 md:w-9 md:h-9" />
           </div>
@@ -109,7 +109,7 @@ const Letsconnect = () => {
       </div>
       {/* Right Side - Contact Form */}
       <div className="bg-white shadow-lg p-6 md:p-8 lg:p-10 rounded-md w-full lg:w-[632px] mt-8 lg:mt-0">
-        <h2 className="text-black font-[Monda] text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-tight lg:leading-[60px]">
+        <h2 className="text-black font-[Monda] text-[30px] md:text-[40px] lg:text-[48px] font-bold leading-tight lg:leading-[60px]">
           Send A Message
         </h2>
         <p className="text-[#827E7D] font-[Manrope] mt-4 text-[16px] md:text-[18px] lg:text-[20px] font-normal leading-relaxed tracking-[0.4px] mb-6">

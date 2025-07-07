@@ -1,25 +1,29 @@
-import React from 'react'
-import AboutHeroSection from '../pages/about/HeroAboutSection'
-import FeatureSection from '../pages/about/Featuresection'
-import AboutEngineersSection from '../pages/about/Aboutengineers'
-import InnovationSection from '../pages/about/Innovationsection'
-import SealingTechnology from '../pages/about/Sealingtechnology'
-import WhereDesignMeetsPerformance from '../pages/about/Wheredesignmetts'
-import Footer from '../pages/home/Footer'
+import { Helmet } from 'react-helmet';
+import AboutHeroSection from '../pages/about/HeroAboutSection';
+import FeatureSection from '../pages/about/Featuresection';
+import AboutEngineersSection from '../pages/about/Aboutengineers';
+import WhereDesignMeetsPerformance from '../pages/about/Wheredesignmetts';
+import Footer from '../pages/home/Footer';
 
 const Aboutpage = () => {
   return (
     <div>
-        <AboutHeroSection/>
-        <FeatureSection/>
-        <AboutEngineersSection/>
-        <SealingTechnology/>
-        <InnovationSection/>
-        <WhereDesignMeetsPerformance/>
-        <Footer/>
-    
-    </div>
-  )
-}
+      <Helmet>
+        <title>Mechanical Seals Manufacturers in Hyderabad | Renault Engineers</title>
+        <meta 
+          name="description" 
+          content="Leading mechanical seals manufacturers in Hyderabad. Renault Engineers offers precision-engineered seals, cartridge seals & custom sealing solutions." 
+        />
+        <link rel="canonical" href="https://renaultengineers.com/about" />
+      </Helmet>
 
-export default Aboutpage
+      <AboutHeroSection />
+      <FeatureSection />
+      <AboutEngineersSection />
+      <WhereDesignMeetsPerformance />
+      <Footer />
+    </div>
+  );
+};
+
+export default Aboutpage;
