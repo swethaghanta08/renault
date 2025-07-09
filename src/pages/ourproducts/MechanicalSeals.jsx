@@ -1,9 +1,27 @@
-import React from "react"
+
+import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 import Footer from "../home/Footer"
 import Mechanicalsealsnavbar from "./Mechanicalsealsnavbar/Mechanicalsealsnavbar"
 
 const MechanicalSeals = () => {
+  // Preload hero and product images for SEO and fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "/assets/Ourproducts/Mechanicalseals/main/image1.jpg",
+      "/assets/Ourproducts/Mechanicalseals/main/image2.jpg"
+    ];
+    [...heroImages, ...productImages].forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
+
   return (
     <div>
       {/* SEO Meta Tags */}
@@ -13,10 +31,12 @@ const MechanicalSeals = () => {
           name="description"
           content="Precision mechanical seals are designed for mixers, reactors, kneaders, and agitators. Engineered to prevent leaks in demanding industrial applications."
         />
-        <link
-          rel="canonical"
-          href="https://renaultengineers.com/our-products/mechanical-seals"
-        />
+        <link rel="canonical" href="https://renaultengineers.com/our-products/mechanical-seals" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Mechanicalseals/main/image1.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Mechanicalseals/main/image2.jpg" />
       </Helmet>
 
       {/* Hero Section */}
@@ -108,28 +128,22 @@ const MechanicalSeals = () => {
         {/* Product Images */}
         <div className="max-w-[1000px] mx-auto mt-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-            <div
-              className="bg-cover bg-center bg-no-repeat rounded-sm"
-              style={{
-                backgroundImage: "url('/assets/Ourproducts/Mechanicalseals/main/image1.jpg')",
-                aspectRatio: "1/1",
-                maxWidth: "180px",
-                maxHeight: "180px",
-                width: "100%",
-                height: "100%",
-              }}
-            ></div>
-            <div
-              className="bg-cover bg-center bg-no-repeat rounded-sm"
-              style={{
-                backgroundImage: "url('/assets/Ourproducts/Mechanicalseals/main/image2.jpg')",
-                aspectRatio: "1/1",
-                maxWidth: "180px",
-                maxHeight: "180px",
-                width: "100%",
-                height: "100%",
-              }}
-            ></div>
+            {["image1.jpg", "image2.jpg"].map((img, idx) => (
+              <div
+                key={idx}
+                className="bg-cover bg-center bg-no-repeat rounded-sm"
+                style={{
+                  backgroundImage: `url('/assets/Ourproducts/Mechanicalseals/main/${img}')`,
+                  aspectRatio: "1/1",
+                  maxWidth: "180px",
+                  maxHeight: "180px",
+                  width: "100%",
+                  height: "100%",
+                }}
+                aria-label={`Mechanical Seals product image ${idx + 1}`}
+                role="img"
+              ></div>
+            ))}
           </div>
         </div>
       </div>

@@ -4,14 +4,14 @@ import { useState, useRef, useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 
 const menuItems = [
-  { name: "SPX Single Semi Catridge Seals", path: "/ourproducts/Splitseals/SPXSingleSemiCatridgeSeals-Splitex" },
+  { name: "SPX Single Semi Catridge Seals", path: "/our-products/Splitseals/SPXSingleSemiCatridgeSeals-Splitex" },
   {
     name: "BGH201 Single Semi Split Seals",
-    path: "/ourproducts/Splitseals/BGH201SingleSemiSplitSeals-HGH201",
+    path: "/our-products/Splitseals/BGH201SingleSemiSplitSeals-HGH201",
   },
   {
     name: "ADKS Contactless seals",
-    path: "/ourproducts/Splitseals/ADKSContactlessseals",
+    path: "/our-products/Splitseals/ADKSContactlessseals",
   },
 ]
 

@@ -1,15 +1,22 @@
-"use client"
 
 import { useState, useRef, useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 
+const preloadNavbarImages = () => {
+  const images = ["/assets/Ourproducts/StandardNavbar/Buttons.png"];
+  images.forEach(src => {
+    const img = new window.Image();
+    img.src = src;
+  });
+};
+
 const menuItems = [
-  { name: "SBF/SBP", path: "/ourproducts/Engineeredseals/SBFSBP" },
-  { name: "SBF(V)-D / SBP(V)-D", path: "/ourproducts/Engineeredseals/SBFVDSBPVD" },
-  { name: "SBPV/SBFV", path: "/ourproducts/Engineeredseals/SBPVSBFV" },
-  { name: "BR Single & Dual Seals (Slurry)", path: "/ourproducts/Engineeredseals/BRSingleDualSealsSlurry" },
-  { name: "PP – D Dual Seals (Pulp & Paper)", path: "/ourproducts/Engineeredseals/PPDDualSealsPulpPaper" },
-  { name: "PP-S Single Seals (Pulp & Paper)", path: "/ourproducts/Engineeredseals/PPSSingleSealsPulpPaper" },
+  { name: "SBF/SBP", path: "/our-products/Engineeredseals/SBFSBP" },
+  { name: "SBF(V)-D / SBP(V)-D", path: "/our-products/Engineeredseals/SBFVDSBPVD" },
+  { name: "SBPV/SBFV", path: "/our-products/Engineeredseals/SBPVSBFV" },
+  { name: "BR Single & Dual Seals (Slurry)", path: "/our-products/Engineeredseals/BRSingleDualSealsSlurry" },
+  { name: "PP – D Dual Seals (Pulp & Paper)", path: "/our-products/Engineeredseals/PPDDualSealsPulpPaper" },
+  { name: "PP-S Single Seals (Pulp & Paper)", path: "/our-products/Engineeredseals/PPSSingleSealsPulpPaper" },
 ]
 
 const Engineeredsealsnavbar = () => {
@@ -21,118 +28,86 @@ const Engineeredsealsnavbar = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
 
-  // Set active item based on current URL path when component mounts or location changes
   useEffect(() => {
-    const currentPath = location.pathname
-    setActiveItem(currentPath)
-    
-    // Find the matching menu item for the current path
-    const matchingItem = menuItems.find(item => currentPath === item.path)
-    
-    // If we have a matching item and the menu has rendered, scroll to make it visible
+    preloadNavbarImages();
+    const currentPath = location.pathname;
+    setActiveItem(currentPath);
+    const matchingItem = menuItems.find(item => currentPath === item.path);
     if (matchingItem && activeItemRef.current && menuRef.current) {
-      // Use setTimeout to ensure the DOM has updated
       setTimeout(() => {
-        scrollActiveItemIntoView()
-      }, 150)
+        scrollActiveItemIntoView();
+      }, 150);
     }
-  }, [location.pathname])
+  }, [location.pathname]);
 
-  // Function to check if scrolling is possible in either direction
   const updateScrollButtons = () => {
     if (menuRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = menuRef.current
-      const maxScrollLeft = scrollWidth - clientWidth
-      
-      setCanScrollLeft(scrollLeft > 5) // Small buffer to account for rounding
-      setCanScrollRight(scrollLeft < maxScrollLeft - 5)
+      const { scrollLeft, scrollWidth, clientWidth } = menuRef.current;
+      const maxScrollLeft = scrollWidth - clientWidth;
+      setCanScrollLeft(scrollLeft > 5);
+      setCanScrollRight(scrollLeft < maxScrollLeft - 5);
     }
-  }
+  };
 
-  // Function to scroll the active item into view with smooth animation
   const scrollActiveItemIntoView = () => {
     if (activeItemRef.current && menuRef.current) {
-      const container = menuRef.current
-      const activeItem = activeItemRef.current
-      
-      // Get element positions
-      const containerRect = container.getBoundingClientRect()
-      const activeItemRect = activeItem.getBoundingClientRect()
-      
-      // Calculate if item is outside visible area
-      const isOutsideLeft = activeItemRect.left < containerRect.left
-      const isOutsideRight = activeItemRect.right > containerRect.right
-      
+      const container = menuRef.current;
+      const activeItem = activeItemRef.current;
+      const containerRect = container.getBoundingClientRect();
+      const activeItemRect = activeItem.getBoundingClientRect();
+      const isOutsideLeft = activeItemRect.left < containerRect.left;
+      const isOutsideRight = activeItemRect.right > containerRect.right;
       if (isOutsideLeft || isOutsideRight) {
-        // Calculate the target scroll position to center the active item
-        const itemOffsetLeft = activeItem.offsetLeft
-        const itemWidth = activeItem.offsetWidth
-        const containerWidth = container.clientWidth
-        
-        let targetScrollLeft = itemOffsetLeft - (containerWidth - itemWidth) / 2
-        
-        // Ensure we don't scroll beyond boundaries
-        const maxScroll = container.scrollWidth - container.clientWidth
-        targetScrollLeft = Math.max(0, Math.min(targetScrollLeft, maxScroll))
-        
-        // Smooth scroll to target position
+        const itemOffsetLeft = activeItem.offsetLeft;
+        const itemWidth = activeItem.offsetWidth;
+        const containerWidth = container.clientWidth;
+        let targetScrollLeft = itemOffsetLeft - (containerWidth - itemWidth) / 2;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        targetScrollLeft = Math.max(0, Math.min(targetScrollLeft, maxScroll));
         container.scrollTo({
           left: targetScrollLeft,
           behavior: 'smooth'
-        })
+        });
       }
-      
-      // Update scroll buttons after a delay
-      setTimeout(updateScrollButtons, 300)
+      setTimeout(updateScrollButtons, 300);
     }
-  }
+  };
 
-  // Update scroll buttons when active item changes
   useEffect(() => {
-    scrollActiveItemIntoView()
-  }, [activeItem])
+    scrollActiveItemIntoView();
+  }, [activeItem]);
 
-  // Initialize scroll buttons and handle resize
   useEffect(() => {
     const handleResize = () => {
-      setTimeout(updateScrollButtons, 100)
-    }
-    
-    // Initial check
-    setTimeout(updateScrollButtons, 100)
-    
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+      setTimeout(updateScrollButtons, 100);
+    };
+    setTimeout(updateScrollButtons, 100);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleScroll = (direction) => {
     if (menuRef.current) {
-      const container = menuRef.current
-      const scrollAmount = container.clientWidth * 0.7 // Scroll 70% of visible width
-      
-      const targetScrollLeft = direction === "left" 
+      const container = menuRef.current;
+      const scrollAmount = container.clientWidth * 0.7;
+      const targetScrollLeft = direction === "left"
         ? container.scrollLeft - scrollAmount
-        : container.scrollLeft + scrollAmount
-      
-      // Smooth scroll with easing
+        : container.scrollLeft + scrollAmount;
       container.scrollTo({
         left: targetScrollLeft,
         behavior: 'smooth'
-      })
-      
-      // Update buttons after scroll animation completes
-      setTimeout(updateScrollButtons, 400)
+      });
+      setTimeout(updateScrollButtons, 400);
     }
-  }
+  };
 
   const handleItemClick = (path) => {
-    setActiveItem(path)
-    navigate(path)
-  }
-
+    setActiveItem(path);
+    navigate(path);
+  };
   const handleScrollEvent = () => {
-    updateScrollButtons()
-  }
+    updateScrollButtons();
+  };
 
   return (
     <div className="flex flex-col px-2 sm:px-4 md:px-6 items-center max-w-[1440px] mx-auto mt-4 sm:mt-6 overflow-hidden">

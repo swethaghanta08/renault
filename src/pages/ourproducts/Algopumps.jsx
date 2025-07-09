@@ -1,8 +1,25 @@
-import React from "react";
+
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Footer from "../home/Footer";
 
 const Algopumps = () => {
+  // Preload hero and product images for SEO and fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg", "image6.jpg", "image7.jpg", "iamge8.jpg"
+    ].map(img => `/assets/Ourproducts/Algopumps/${img}`);
+    [...heroImages, ...productImages].forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
+
   return (
     <div>
       {/* Meta SEO Tags */}
@@ -12,20 +29,27 @@ const Algopumps = () => {
           name="description"
           content="Explore Renault Engineers for top-quality ALGO Pumps & Pumping Solutions. Trust our reliable industrial pumps to meet your needs with unmatched performance. Contact us Today!"
         />
-        <link
-          rel="canonical"
-          href="https://renaultengineers.com/our-products/algo-pumps"
-        />
+        <link rel="canonical" href="https://renaultengineers.com/our-products/algo-pumps" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Algopumps/image1.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Algopumps/image2.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Algopumps/image3.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Algopumps/image4.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Algopumps/image5.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Algopumps/image6.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Algopumps/image7.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Algopumps/iamge8.jpg" />
       </Helmet>
 
       {/* Hero Section */}
       <section
         className="relative xl:max-w-[1440px] lg:max-w-[1024px] md:max-w-[768px] h-[320px] md:h-[460px] lg:h-[600px] xl:w-[1440px] mt-[20px] mx-auto w-full bg-cover bg-center flex items-center justify-center"
         style={{
-          backgroundImage: `url(${
-            window.innerWidth >= 1024
-              ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
-              : window.innerWidth >= 768
+          backgroundImage: `url(${typeof window !== "undefined" && window.innerWidth >= 1024
+            ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
+            : typeof window !== "undefined" && window.innerWidth >= 768
               ? "/assets/Contactpage/Herosection/heroimage-tab.png"
               : "/assets/Contactpage/Herosection/heroimage-phone.png"
           })`,
@@ -127,6 +151,8 @@ const Algopumps = () => {
                   width: "100%",
                   height: "100%",
                 }}
+                aria-label={`Algo Pumps product image ${idx + 1}`}
+                role="img"
               ></div>
             ))}
           </div>
@@ -145,6 +171,8 @@ const Algopumps = () => {
                   width: "100%",
                   height: "100%",
                 }}
+                aria-label={`Algo Pumps product image ${idx + 5}`}
+                role="img"
               ></div>
             ))}
           </div>

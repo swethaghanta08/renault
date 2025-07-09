@@ -1,8 +1,23 @@
+
+import { useEffect } from "react"
 import { Helmet } from "react-helmet"
 import Footer from "../home/Footer"
 import StandardMechanicalnavbar from "./Standardmechanicalnavbar/Standardmechanicalnavbar"
 
 const StandardMechanicalSeals = () => {
+  // Preload hero images for SEO and fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    heroImages.forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
+
   return (
     <div>
       {/* SEO Meta Tags */}
@@ -12,10 +27,10 @@ const StandardMechanicalSeals = () => {
           name="description"
           content="Discover high-performance standard mechanical seals for pumps and compressors by Renault Engineers. Engineered for durability, leak prevention, and industrial-grade reliability."
         />
-        <link
-          rel="canonical"
-          href="https://renaultengineers.com/our-products/standard-mechanical-seals"
-        />
+        <link rel="canonical" href="https://renaultengineers.com/our-products/standard-mechanical-seals" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
       </Helmet>
 
       {/* Hero Section */}

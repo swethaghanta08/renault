@@ -1,6 +1,5 @@
-"use client"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import Gaslubricatedsealsnavbar from "../Gaslubricatedsealsnavbar/Gaslubricatedsealsnavbar"
@@ -8,6 +7,36 @@ import Gaslubricatedsealsnavbar from "../Gaslubricatedsealsnavbar/Gaslubricateds
 const GSPHKSingle = () => {
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/gaslubricatedseals/gsph/image1.jpg")
+  const [backgroundImage, setBackgroundImage] = useState("")
+
+  // Preload hero and product images for SEO and fast rendering
+  useEffect(() => {
+    const preloadImage = (src) => {
+      const img = new window.Image();
+      img.src = src;
+    };
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    heroImages.forEach(preloadImage);
+    [
+      "/assets/Ourproducts/gaslubricatedseals/gsph/image1.jpg",
+      "/assets/Ourproducts/gaslubricatedseals/gsph/image2.jpg",
+      "/assets/Ourproducts/gaslubricatedseals/gsph/image3.jpg"
+    ].forEach(preloadImage);
+    const width = window.innerWidth;
+    let imagePath;
+    if (width >= 1024) {
+      imagePath = heroImages[0];
+    } else if (width >= 768) {
+      imagePath = heroImages[1];
+    } else {
+      imagePath = heroImages[2];
+    }
+    setBackgroundImage(imagePath);
+  }, []);
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -81,15 +110,20 @@ const GSPHKSingle = () => {
 
   return (
     <>
+      <Helmet>
+        <title>GSPH-K Single & Dual Gas Seals/CGSH_K | Gas Lubricated Seals | Renault</title>
+        <meta name="description" content="GSPH-K Single & Dual Gas Seals/CGSH_K: Single and dual seal configuration, balanced design, gas-lubricated, and suitable for pumps and compressors. Learn more about features, applications, and standards." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/gaslubricatedseals/gsph/image1.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/gaslubricatedseals/gsph/image2.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/gaslubricatedseals/gsph/image3.jpg" />
+      </Helmet>
       <section
         className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
         style={{
-          backgroundImage: `url(${typeof window !== "undefined" && window.innerWidth >= 1024
-            ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
-            : typeof window !== "undefined" && window.innerWidth >= 768
-              ? "/assets/Contactpage/Herosection/heroimage-tab.png"
-              : "/assets/Contactpage/Herosection/heroimage-phone.png"
-            })`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

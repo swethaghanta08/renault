@@ -1,6 +1,5 @@
-"use client"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import Mechanicalsealsnavbar from "../Mechanicalsealsnavbar/Mechanicalsealsnavbar"
@@ -8,6 +7,34 @@ import Mechanicalsealsnavbar from "../Mechanicalsealsnavbar/Mechanicalsealsnavba
 const BSHLU = () => {
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/Mechanicalseals/BSHLU/image1.jpg")
+  const [backgroundImage, setBackgroundImage] = useState("")
+
+  useEffect(() => {
+    const preloadImage = (src) => {
+      const img = new window.Image();
+      img.src = src;
+    };
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    heroImages.forEach(preloadImage);
+    [
+      "/assets/Ourproducts/Mechanicalseals/BSHLU/image1.jpg",
+      "/assets/Ourproducts/Mechanicalseals/BSHLU/image2.jpg"
+    ].forEach(preloadImage);
+    const width = window.innerWidth;
+    let imagePath;
+    if (width >= 1024) {
+      imagePath = heroImages[0];
+    } else if (width >= 768) {
+      imagePath = heroImages[1];
+    } else {
+      imagePath = heroImages[2];
+    }
+    setBackgroundImage(imagePath);
+  }, []);
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -18,12 +45,11 @@ const BSHLU = () => {
     "Balanced design",
     "Independent of direction of rotation",
     "Cartridge construction",
-   "Designed for bottom entry vessels",
-   "Rotary unit with multiple springs",
-   "Construction with Integrated bearing",
-   "BSHLU-D Dual Seals (Bottom Entry) – 50 bars",
-   
-]
+    "Designed for bottom entry vessels",
+    "Rotary unit with multiple springs",
+    "Construction with Integrated bearing",
+    "BSHLU-D Dual Seals (Bottom Entry) – 50 bars"
+  ];
 
   const technicalFeatures = [
    "Over all connecting dimensions are tailor made to customer's specifications",
@@ -40,7 +66,7 @@ const BSHLU = () => {
    "Agitators"
   ]
 
-  const materialOptions = ["According to application and customer's specification" ]
+  const materialOptions = ["According to application and customer's specification"];
 
   const performanceCapabilities = [
   "Shaft diameter: dw = ... 400 mm ( ... 15.75)",
@@ -65,24 +91,28 @@ const BSHLU = () => {
 
   const thumbnails = [
     "/assets/Ourproducts/Mechanicalseals/BSHLU/image1.jpg",
-    "/assets/Ourproducts/Mechanicalseals/BSHLU/image2.jpg",
-  ]
-
+    "/assets/Ourproducts/Mechanicalseals/BSHLU/image2.jpg"
+  ];
   return (
     <>
+      <Helmet>
+        <title>BSHLU-D Dual Seals (Bottom Entry) – 50 bars | Mechanical Seals | Renault</title>
+        <meta name="description" content="BSHLU-D Dual Seals: Dual seal configuration, balanced design, cartridge construction, and integrated bearing for bottom entry vessels. Learn more about features, applications, and standards." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Mechanicalseals/BSHLU/image1.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Mechanicalseals/BSHLU/image2.jpg" />
+      </Helmet>
       <section
         className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
         style={{
-          backgroundImage: `url(${typeof window !== "undefined" && window.innerWidth >= 1024
-            ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
-            : typeof window !== "undefined" && window.innerWidth >= 768
-              ? "/assets/Contactpage/Herosection/heroimage-tab.png"
-              : "/assets/Contactpage/Herosection/heroimage-phone.png"
-            })`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
+      
         {/* SVG for Large & Extra-Large Screens */}
         <div className="absolute top-0 right-0 hidden lg:block">
           <svg

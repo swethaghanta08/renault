@@ -4,39 +4,39 @@ import { useState, useRef, useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 
 const menuItems = [
-  { name: "B100/B800 Single Balanced Seals (Compact)", path: "/ourproducts/StandardMechanicalSeals/CompactB100-B800-H10-H8" },
+  { name: "B100/B800 Single Balanced Seals (Compact)", path: "/our-products/StandardMechanicalSeals/CompactB100-B800-H10-H8" },
   {
     name: "BRN Single Balanced Seals (Stationary Design / Multiple Springs)",
-    path: "/ourproducts/StandardMechanicalSeals/BRN-HRNSingleBalanced",
+    path: "/our-products/StandardMechanicalSeals/BRN-HRNSingleBalanced",
   },
   {
     name: "B700N Single Balanced Seals (Multiple Springs)",
-    path: "/ourproducts/StandardMechanicalSeals/MultipleSpringsB700N-H7N",
+    path: "/our-products/StandardMechanicalSeals/MultipleSpringsB700N-H7N",
   },
   {
     name: "B740-D Dual Balanced Seals (Multiple Springs)",
-    path: "/ourproducts/StandardMechanicalSeals/DualBalancedSealsB740",
+    path: "/our-products/StandardMechanicalSeals/DualBalancedSealsB740",
   },
-  { name: "U700N Single Unbalanced Seals (Wave Springs)", path: "/ourproducts/StandardMechanicalSeals/U700N-M7NSingle" },
+  { name: "U700N Single Unbalanced Seals (Wave Springs)", path: "/our-products/StandardMechanicalSeals/U700N-M7NSingle" },
   {
     name: "UFLWT Single Balanced Seals (Rotary Metal Bellows)",
-    path: "/ourproducts/StandardMechanicalSeals/UFLWTSingle-MFLWT",
+    path: "/our-products/StandardMechanicalSeals/UFLWTSingle-MFLWT",
   },
   {
     name: "UFL650 Single Balanced Seals (Stationary Metal Bellows)",
-    path: "/ourproducts/StandardMechanicalSeals/UFL650Single-MFL65",
+    path: "/our-products/StandardMechanicalSeals/UFL650Single-MFL65",
   },
   {
     name: "UFL850N Single Balanced Seals (Rotary Metal Bellows)",
-    path: "/ourproducts/StandardMechanicalSeals/UFL850NSingle-MFL85N",
+    path: "/our-products/StandardMechanicalSeals/UFL850NSingle-MFL85N",
   },
-  { name: "UG100 Single Unbalanced Seals (Rubber Bellows)", path: "/ourproducts/StandardMechanicalSeals/UG100Single-MG1" },
-  { name: "UG943 Single Unbalanced Seals (Rubber Bellows)", path: "/ourproducts/StandardMechanicalSeals/UG943Single-MG9" },
-  { name: "U200N Single Unbalanced Seals (Conical Spring)", path: "/ourproducts/StandardMechanicalSeals/U200N-M2NSingle" },
-  { name: "U740-D Dual Unbalanced Seals (Multiple Springs)", path: "/ourproducts/StandardMechanicalSeals/U740-D-M74-DDual" },
-  { name: "U300N Single Unbalanced Seals (Conical Spring)", path: "/ourproducts/StandardMechanicalSeals/U300N-M3NSingle" },
-  { name: "B120N Single Balanced Seals (Conical Spring)", path: "/ourproducts/StandardMechanicalSeals/B120NSingle" },
-  { name: "BJ920N Single Balanced Seals (Wave Springs)", path: "/ourproducts/StandardMechanicalSeals/BJ920N-HJ92NSingle" },
+  { name: "UG100 Single Unbalanced Seals (Rubber Bellows)", path: "/our-products/StandardMechanicalSeals/UG100Single-MG1" },
+  { name: "UG943 Single Unbalanced Seals (Rubber Bellows)", path: "/our-products/StandardMechanicalSeals/UG943Single-MG9" },
+  { name: "U200N Single Unbalanced Seals (Conical Spring)", path: "/our-products/StandardMechanicalSeals/U200N-M2NSingle" },
+  { name: "U740-D Dual Unbalanced Seals (Multiple Springs)", path: "/our-products/StandardMechanicalSeals/U740-D-M74-DDual" },
+  { name: "U300N Single Unbalanced Seals (Conical Spring)", path: "/our-products/StandardMechanicalSeals/U300N-M3NSingle" },
+  { name: "B120N Single Balanced Seals (Conical Spring)", path: "/our-products/StandardMechanicalSeals/B120NSingle" },
+  { name: "BJ920N Single Balanced Seals (Wave Springs)", path: "/our-products/StandardMechanicalSeals/BJ920N-HJ92NSingle" },
 ]
 
 const StandardMechanicalNavbar = () => {

@@ -1,20 +1,17 @@
-
-import { useState, useRef, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { motion, AnimatePresence } from "framer-motion"
-
+import { useState, useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 const Header = () => {
-  const navigate = useNavigate()
-  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false)
-  const [secondaryNavOpen, setSecondaryNavOpen] = useState(false)
-  const [secondaryNavIndex, setSecondaryNavIndex] = useState(0)
-  const [mediumScreenMenuOpen, setMediumScreenMenuOpen] = useState(false)
-  const [smallScreenMenuOpen, setSmallScreenMenuOpen] = useState(false)
-  const productsRef = useRef(null)
-  const secondaryNavRef = useRef(null)
-  const mediumMenuRef = useRef(null)
-  const smallMenuRef = useRef(null)
-
+  const navigate = useNavigate();
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const [secondaryNavOpen, setSecondaryNavOpen] = useState(false);
+  const [secondaryNavIndex, setSecondaryNavIndex] = useState(0);
+  const [mediumScreenMenuOpen, setMediumScreenMenuOpen] = useState(false);
+  const [smallScreenMenuOpen, setSmallScreenMenuOpen] = useState(false);
+  const productsRef = useRef(null);
+  const secondaryNavRef = useRef(null);
+  const mediumMenuRef = useRef(null);
+  const smallMenuRef = useRef(null);
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -22,54 +19,47 @@ const Header = () => {
         !productsRef.current.contains(event.target) &&
         !secondaryNavRef.current?.contains(event.target)
       ) {
-        setProductsDropdownOpen(false)
-        setSecondaryNavOpen(false)
+        setProductsDropdownOpen(false);
+        setSecondaryNavOpen(false);
       }
       if (mediumMenuRef.current && !mediumMenuRef.current.contains(event.target)) {
-        setMediumScreenMenuOpen(false)
+        setMediumScreenMenuOpen(false);
       }
       if (smallMenuRef.current && !smallMenuRef.current.contains(event.target)) {
-        setSmallScreenMenuOpen(false)
+        setSmallScreenMenuOpen(false);
       }
-    }
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
-
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   const toggleProductsDropdown = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setProductsDropdownOpen(!productsDropdownOpen)
-    if (!productsDropdownOpen) setSecondaryNavOpen(false)
-  }
-
+    e.preventDefault();
+    e.stopPropagation();
+    setProductsDropdownOpen(!productsDropdownOpen);
+    if (!productsDropdownOpen) setSecondaryNavOpen(false);
+  };
   const handleMouseEnterProductItem = (index) => {
-    setSecondaryNavIndex(index)
-    setSecondaryNavOpen(true)
-  }
-
+    setSecondaryNavIndex(index);
+    setSecondaryNavOpen(true);
+  };
   const handleMouseLeaveProductItem = () => {
-    setSecondaryNavOpen(false)
-  }
-
+    setSecondaryNavOpen(false);
+  };
   const handleMediumScreenMenuClick = () => {
-    setMediumScreenMenuOpen(!mediumScreenMenuOpen)
-  }
-
+    setMediumScreenMenuOpen(!mediumScreenMenuOpen);
+  };
   const handleSmallScreenMenuClick = () => {
-    setSmallScreenMenuOpen(!smallScreenMenuOpen)
-  }
-
+    setSmallScreenMenuOpen(!smallScreenMenuOpen);
+  };
   const handleMobileProductCategoryClick = (e, index) => {
-    e.preventDefault()
+    e.preventDefault();
     if (secondaryNavIndex === index && secondaryNavOpen) {
-      setSecondaryNavOpen(false)
+      setSecondaryNavOpen(false);
     } else {
-      setSecondaryNavIndex(index)
-      setSecondaryNavOpen(true)
+      setSecondaryNavIndex(index);
+      setSecondaryNavOpen(true);
     }
-  }
-
+  };
   const productCategories = [
     "Standard Cartridge Seals",
     "Standard Mechanical Seals For Pumps & Compressors",
@@ -80,8 +70,7 @@ const Header = () => {
     "Algo Pumps",
     "Bearing Isolators",
     "Magnetic Mixers (Stirrers)",
-  ]
-
+  ];
   const productSecondaryNavItems = [
     [
       "CTX ANSI Single Seals/Cartex ANSI Single Seals",
@@ -130,14 +119,13 @@ const Header = () => {
       "UR-D Dual Seals",
       "MXS Single & Dual Seals (Top-side Entry)/SeccoMix1",
     ],
-    ["SPX/Splitex Single Semi Catridge Seals", "BGH201/HGH201 Single Semi Split Seals", "ADKS Contactless seals"],
+    ["SPX/Splitex Single Semi Cartridge Seals", "BGH201/HGH201 Single Semi Split Seals", "ADKS Contactless seals"],
     [
       "GSAZ Single & Dual Gas Seals/AGSZ",
       "CTX-GSDN Dual Gas Seals (For Pumps)",
       "GSPH-K Single & Dual Gas Seals (For Pumps)/CGSH_K",
     ],
-  ]
-
+  ];
   const productComponents = {
     "CTX ANSI Single Seals/Cartex ANSI Single Seals": "/our-products/StandardCartridgeSeals/CTXANSISingleSeals-Cartex-ansi-single-seals",
     "CTX ANSI Dual Seals/Cartex Ansi Dual Seals": "/our-products/StandardCartridgeSeals/CTXANSIDualSeals-Cartex-ansi-dual-seals",
@@ -187,20 +175,17 @@ const Header = () => {
     "U164 Single & Dual Seals (Top-side Entry)/SeccoMix461": "/our-products/Mechanicalseals/U164-SeccoMix461",
     "UR-D Dual Seals": "/our-products/Mechanicalseals/UR",
     "MXS Single & Dual Seals (Top-side Entry)/SeccoMix1": "/our-products/Mechanicalseals/MXS-SeccoMix1",
-    "SPX/Splitex Single Semi Catridge Seals": "/our-products/Splitseals/SPXSingleSemiCatridgeSeals-Splitex",
+    "SPX/Splitex Single Semi Cartridge Seals": "/our-products/Splitseals/SPXSingleSemiCatridgeSeals-Splitex",
     "BGH201/HGH201 Single Semi Split Seals": "/our-products/Splitseals/BGH201SingleSemiSplitSeals-HGH201",
     "ADKS Contactless seals": "/our-products/Splitseals/ADKSContactlessseals",
     "GSAZ Single & Dual Gas Seals/AGSZ": "/our-products/Gaslubricatedseals/GSAZSingle-DualGasSeals-AGSZ",
     "CTX-GSDN Dual Gas Seals (For Pumps)": "/our-products/Gaslubricatedseals/CTXGSDN",
     "GSPH-K Single & Dual Gas Seals (For Pumps)/CGSH_K": "/our-products/Gaslubricatedseals/GSPHKSingle-CGSH-K",
-  }
-
+  };
   const getProductSecondaryPath = (categoryIndex, itemName) =>
     productComponents[itemName] ||
-    `/products/${productCategories[categoryIndex].toLowerCase().replace(/\s+/g, "-")}/${itemName.toLowerCase().replace(/\s+/g, "-")}`
-
-  const getProductComponentPath = (itemName) => productComponents[itemName] || "/"
-
+    `/products/${productCategories[categoryIndex].toLowerCase().replace(/\s+/g, "-")}/${itemName.toLowerCase().replace(/\s+/g, "-")}`;
+  const getProductComponentPath = (itemName) => productComponents[itemName] || "/";
   const getProductMainCategoryRoute = (index) => {
     const mainCategoryRoutes = {
       0: "/our-products/Standardcartridgeseals",
@@ -212,12 +197,11 @@ const Header = () => {
       6: "/our-products/Algopumps",
       7: "/our-products/BearingIsollators",
       8: "/our-products/Magneticmixers",
-    }
-    return mainCategoryRoutes[index] || "/"
-  }
-
+    };
+    return mainCategoryRoutes[index] || "/";
+  };
   const HamburgerButton = ({ isOpen, onClick }) => (
-    <button onClick={onClick} className="flex flex-col justify-center items-center w-8 h-8 space-y-1.5">
+    <button onClick={onClick} className="flex flex-col justify-center items-center w-8 h-8 space-y-1.5" aria-label={isOpen ? "Close Menu" : "Open Menu"}>
       <motion.span
         animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
         className="w-6 h-0.5 bg-black block"
@@ -234,19 +218,20 @@ const Header = () => {
         transition={{ duration: 0.2 }}
       />
     </button>
-  )
-
+  );
   return (
     <>
       <header className="lg:mt-[10px] lg:w-[1024px] lg:mx-auto lg:h-auto lg:flex lg:items-center lg:justify-start lg:px-12 xl:mt-[12px] xl:w-auto xl:px-16 md:w-[768px] md:px-6 md:flex md:items-center md:justify-between md:mt-2 w-full px-4 flex items-center justify-between mt-2 relative max-w-[1440px] mx-auto">
-        <Link to="/">
+        <Link to="/" aria-label="Home">
           <div
             className="lg:w-[200px] lg:h-[50px] xl:w-[235px] xl:h-[59px] md:w-[180px] md:h-[45px] w-[86px] h-[22px] bg-cover bg-center cursor-pointer"
             style={{ backgroundImage: "url('/assets/logo/Logo.png')" }}
+            role="img"
+            aria-label="Company Logo"
           ></div>
         </Link>
 
-        <nav className="lg:flex lg:items-center lg:ml-8 lg:gap-6 xl:ml-12 xl:gap-8 hidden">
+        <nav className="lg:flex lg:items-center lg:ml-8 lg:gap-6 xl:ml-12 xl:gap-8 hidden" aria-label="Main Navigation">
           <Link
             to="/"
             className="lg:text-black font-[Monda] lg:text-[16px] lg:font-semibold xl:text-[18px] relative group"
@@ -294,7 +279,7 @@ const Header = () => {
                   {productCategories.map((category, index) => (
                     <Link
                       key={index}
-                      to={`#`}
+                      to="#"
                       style={{
                         display: "flex",
                         padding: "8px 0px",
@@ -311,9 +296,9 @@ const Header = () => {
                       onMouseEnter={() => (index < 6 ? handleMouseEnterProductItem(index) : setSecondaryNavOpen(false))}
                       onMouseLeave={handleMouseLeaveProductItem}
                       onClick={(e) => {
-                        e.preventDefault()
-                        setProductsDropdownOpen(false)
-                        navigate(getProductMainCategoryRoute(index))
+                        e.preventDefault();
+                        setProductsDropdownOpen(false);
+                        navigate(getProductMainCategoryRoute(index));
                       }}
                       className="group"
                     >
@@ -363,9 +348,9 @@ const Header = () => {
                             position: "relative",
                           }}
                           onClick={() => {
-                            setProductsDropdownOpen(false)
-                            setSecondaryNavOpen(false)
-                            navigate(getProductComponentPath(item))
+                            setProductsDropdownOpen(false);
+                            setSecondaryNavOpen(false);
+                            navigate(getProductComponentPath(item));
                           }}
                           className="group"
                         >
@@ -394,18 +379,13 @@ const Header = () => {
             <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
           </Link>
         </nav>
-
-        {/* Medium Screen Menu Button */}
         <div className="relative md:block lg:hidden xl:hidden hidden" ref={mediumMenuRef}>
           <HamburgerButton isOpen={mediumScreenMenuOpen} onClick={handleMediumScreenMenuClick} />
         </div>
-
-        {/* Small Screen Menu Button */}
         <div className="relative md:hidden lg:hidden xl:hidden block" ref={smallMenuRef}>
           <HamburgerButton isOpen={smallScreenMenuOpen} onClick={handleSmallScreenMenuClick} />
         </div>
       </header>
-
       <AnimatePresence>
         {mediumScreenMenuOpen && (
           <motion.div
@@ -420,10 +400,11 @@ const Header = () => {
               <button
                 className="self-start w-[32px] h-[32px] text-black"
                 onClick={() => setMediumScreenMenuOpen(false)}
+                aria-label="Close Menu"
               >
                 <img src="/assets/Homepage/Header/xbutton.png" alt="Close" className="w-full h-full" />
               </button>
-              <nav className="flex flex-row mt-[-40px] items-start justify-between ml-[30px] w-[600px]">
+              <nav className="flex flex-row mt-[-40px] items-start justify-between ml-[30px] w-[600px]" aria-label="Mobile Navigation">
                 <Link
                   to="/"
                   className="text-black font-[Monda] text-[20px] font-semibold leading-normal"
@@ -444,9 +425,9 @@ const Header = () => {
                       href="#"
                       className="text-black font-[Monda] text-[20px] font-semibold leading-normal whitespace-nowrap"
                       onClick={(e) => {
-                        e.preventDefault()
-                        e.stopPropagation()
-                        toggleProductsDropdown(e)
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleProductsDropdown(e);
                       }}
                     >
                       Our Products
@@ -475,7 +456,7 @@ const Header = () => {
                         {productCategories.map((category, index) => (
                           <Link
                             key={index}
-                            to={`#`}
+                            to="#"
                             style={{
                               display: "flex",
                               padding: "8px 0px",
@@ -490,15 +471,15 @@ const Header = () => {
                               position: "relative",
                             }}
                             onClick={(e) => {
-                              e.preventDefault()
-                              e.stopPropagation()
+                              e.preventDefault();
+                              e.stopPropagation();
                               if (index < 6) {
-                                handleMouseEnterProductItem(index)
+                                handleMouseEnterProductItem(index);
                               } else {
-                                setProductsDropdownOpen(false)
-                                setSecondaryNavOpen(false)
-                                navigate(getProductMainCategoryRoute(index))
-                                setMediumScreenMenuOpen(false)
+                                setProductsDropdownOpen(false);
+                                setSecondaryNavOpen(false);
+                                navigate(getProductMainCategoryRoute(index));
+                                setMediumScreenMenuOpen(false);
                               }
                             }}
                             className="group"
@@ -541,10 +522,10 @@ const Header = () => {
                                   position: "relative",
                                 }}
                                 onClick={() => {
-                                  setProductsDropdownOpen(false)
-                                  setSecondaryNavOpen(false)
-                                  navigate(getProductComponentPath(item))
-                                  setMediumScreenMenuOpen(false)
+                                  setProductsDropdownOpen(false);
+                                  setSecondaryNavOpen(false);
+                                  navigate(getProductComponentPath(item));
+                                  setMediumScreenMenuOpen(false);
                                 }}
                                 className="group"
                               >
@@ -577,7 +558,6 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
       <AnimatePresence>
         {smallScreenMenuOpen && (
           <motion.div
@@ -589,7 +569,7 @@ const Header = () => {
             ref={smallMenuRef}
           >
             <div className="h-auto flex flex-col p-5 z-50 bg-white w-full">
-              <nav className="flex flex-row items-center justify-center w-full gap-5">
+              <nav className="flex flex-row items-center justify-center w-full gap-5" aria-label="Mobile Navigation">
                 <Link
                   to="/"
                   className="text-black font-[Monda] text-[12px] font-semibold leading-normal"
@@ -608,12 +588,13 @@ const Header = () => {
                   <button
                     className="text-black font-[Monda] text-[12px] font-semibold leading-normal whitespace-nowrap cursor-pointer bg-transparent border-none p-0"
                     onClick={toggleProductsDropdown}
+                    aria-label="Toggle Products Menu"
                   >
                     Our Products
                   </button>
                   {productsDropdownOpen && (
                     <div
-                      className="absolute   w-[77vw] max-w-[300px] right-[-80px] z-50 bg-[#363636] p-4 rounded-lg mt-2"
+                      className="absolute w-[77vw] max-w-[300px] right-[-80px] z-50 bg-[#363636] p-4 rounded-lg mt-2"
                       style={{ top: "40px" }}
                     >
                       {productCategories.map((item, idx) => (
@@ -621,17 +602,18 @@ const Header = () => {
                           <button
                             className="text-white font-[Manrope] text-[14px] font-medium relative group cursor-pointer bg-transparent border-none text-left w-full p-1 flex items-center justify-between"
                             onClick={(e) => {
-                              e.preventDefault()
-                              e.stopPropagation()
+                              e.preventDefault();
+                              e.stopPropagation();
                               if (idx >= 6) {
-                                setSmallScreenMenuOpen(false)
-                                setProductsDropdownOpen(false)
-                                setSecondaryNavOpen(false)
-                                navigate(getProductMainCategoryRoute(idx))
+                                setSmallScreenMenuOpen(false);
+                                setProductsDropdownOpen(false);
+                                setSecondaryNavOpen(false);
+                                navigate(getProductMainCategoryRoute(idx));
                               } else {
-                                handleMobileProductCategoryClick(e, idx)
+                                handleMobileProductCategoryClick(e, idx);
                               }
                             }}
+                            aria-label={`Toggle ${item} Submenu`}
                           >
                             <span>{item}</span>
                             {idx < 6 && (
@@ -646,13 +628,14 @@ const Header = () => {
                               <button
                                 className="text-yellow-300 font-[Manrope] text-[12px] font-bold relative group cursor-pointer bg-transparent border-none text-left w-full p-1"
                                 onClick={(e) => {
-                                  e.preventDefault()
-                                  e.stopPropagation()
-                                  setSmallScreenMenuOpen(false)
-                                  setProductsDropdownOpen(false)
-                                  setSecondaryNavOpen(false)
-                                  navigate(getProductMainCategoryRoute(idx))
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  setSmallScreenMenuOpen(false);
+                                  setProductsDropdownOpen(false);
+                                  setSecondaryNavOpen(false);
+                                  navigate(getProductMainCategoryRoute(idx));
                                 }}
+                                aria-label={`View All ${productCategories[idx]}`}
                               >
                                 {`→ View All ${productCategories[idx]}`}
                                 <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
@@ -662,13 +645,14 @@ const Header = () => {
                                   key={subIdx}
                                   className="text-white font-[Manrope] text-[12px] font-medium relative group cursor-pointer bg-transparent border-none text-left w-full p-1"
                                   onClick={(e) => {
-                                    e.preventDefault()
-                                    e.stopPropagation()
-                                    setSmallScreenMenuOpen(false)
-                                    setProductsDropdownOpen(false)
-                                    setSecondaryNavOpen(false)
-                                    navigate(getProductComponentPath(subItem))
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setSmallScreenMenuOpen(false);
+                                    setProductsDropdownOpen(false);
+                                    setSecondaryNavOpen(false);
+                                    navigate(getProductComponentPath(subItem));
                                   }}
+                                  aria-label={subItem}
                                 >
                                   {subItem}
                                   <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -701,7 +685,7 @@ const Header = () => {
         )}
       </AnimatePresence>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

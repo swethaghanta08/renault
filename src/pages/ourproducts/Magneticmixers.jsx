@@ -1,12 +1,28 @@
-import React from "react";
+
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Footer from "../home/Footer";
 
 const Magnetimixers = () => {
-  const bgImage =
-    window.innerWidth >= 1024
-      ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
-      : window.innerWidth >= 768
+  // Preload hero and product images for SEO and fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "/assets/Ourproducts/magneticmixers/image2.jpg"
+    ];
+    [...heroImages, ...productImages].forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
+
+  const bgImage = typeof window !== "undefined" && window.innerWidth >= 1024
+    ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
+    : typeof window !== "undefined" && window.innerWidth >= 768
       ? "/assets/Contactpage/Herosection/heroimage-tab.png"
       : "/assets/Contactpage/Herosection/heroimage-phone.png";
 
@@ -19,10 +35,11 @@ const Magnetimixers = () => {
           name="description"
           content="Looking for reliable magnetic mixers for sterile applications? Renault Engineers in Hyderabad offers top-notch solutions tailored to meet your manufacturing needs."
         />
-        <link
-          rel="canonical"
-          href="https://renaultengineers.com/our-products/magnetic-mixers"
-        />
+        <link rel="canonical" href="https://renaultengineers.com/our-products/magnetic-mixers" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/magneticmixers/image2.jpg" />
       </Helmet>
 
       {/* Hero Section */}
@@ -106,6 +123,8 @@ const Magnetimixers = () => {
               maxHeight: "180px",
               width: "100%",
             }}
+            aria-label="Magnetic Mixers product image 1"
+            role="img"
           />
         </div>
       </div>

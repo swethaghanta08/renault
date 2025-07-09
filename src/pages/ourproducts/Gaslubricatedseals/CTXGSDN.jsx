@@ -1,38 +1,65 @@
-"use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
-import Engineeredsealsnavbar from "../Engineeredsealsnavbar/Engineeredsealsnavbar"
 import Gaslubricatedsealsnavbar from "../Gaslubricatedsealsnavbar/Gaslubricatedsealsnavbar"
 
 const CTXGSDN = () => {
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/gaslubricatedseals/ctx/image1.jpg")
+  const [backgroundImage, setBackgroundImage] = useState("")
+
+  useEffect(() => {
+    const preloadImage = (src) => {
+      const img = new window.Image();
+      img.src = src;
+    };
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    heroImages.forEach(preloadImage);
+    [
+      "/assets/Ourproducts/gaslubricatedseals/ctx/image1.jpg",
+      "/assets/Ourproducts/gaslubricatedseals/ctx/image2.jpg",
+      "/assets/Ourproducts/gaslubricatedseals/ctx/image3.jpg"
+    ].forEach(preloadImage);
+    const width = window.innerWidth;
+    let imagePath;
+    if (width >= 1024) {
+      imagePath = heroImages[0];
+    } else if (width >= 768) {
+      imagePath = heroImages[1];
+    } else {
+      imagePath = heroImages[2];
+    }
+    setBackgroundImage(imagePath);
+  }, []);
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
   }
 
   const productFeatures = [
-   "Dual seal configuration",
-   "Balanced design",
-   "Cartridge construction",
-   "Stationary design with multiple springs",
-   "Seat design is rotary",
-   "Designed to remain in the closed position, even in the event of buffer pressure failure.",
-   "Can accommodate reverse pressure",
-   "Gas-lubricated design",
-   "Gas grooves design is available in both V-grooves and U-grooves, regardless of the direction of rotation.",
-   "CTX-GSDN dual gas seals"
-  ]
+    "Dual seal configuration",
+    "Balanced design",
+    "Cartridge construction",
+    "Stationary design with multiple springs",
+    "Seat design is rotary",
+    "Designed to remain in the closed position, even in the event of buffer pressure failure.",
+    "Can accommodate reverse pressure",
+    "Gas-lubricated design",
+    "Gas grooves design is available in both V-grooves and U-grooves, regardless of the direction of rotation.",
+    "CTX-GSDN dual gas seals"
+  ];
 
   const technicalFeatures = [
     "Seal faces are designed to be noncontacting",
     "Designed for environmental protection with high efficiency",
     "There is no friction on the seal faces and there is no heat generated at the seal or in the medium",
     "Trouble free operations as complex components are not required to dissipate frictional heat"
-  ]
+  ];
 
   const industrialApplications = [
     "Chemical industry",
@@ -41,63 +68,54 @@ const CTXGSDN = () => {
     "Media which require high purity",
     "Environmental harmful media",
     "Pumps"
-  ]
+  ];
 
-  const materialOptions = ["Seal face: Silicon carbide (Q1/Q19)",
+  const materialOptions = [
+    "Seal face: Silicon carbide (Q1/Q19)",
     "Seat: Silicon carbide (Q19/Q1)",
     "Secondary seals: FKM (V), EPDM (E), FFKM (K)",
     "Spring: Hastelloy® C-4 (M)",
     "Metal parts: CrNiMo steel (G), Hastelloy® C-4 (M)"
-  ]
+  ];
 
   const performanceCapabilities = [
-   "Shaft diameter: d1 = 30 … 100 mm (1.18 ... 3.94",
-   "Pressure: p1 = 13 bar (189 PSI), p3 = 16 bar (232 PSI) with V-grooves (uni-directional) p1 = 9 bar (131 PSI), p3 = 12 bar (174 PSI) with U-grooves (bi-directional) Differential pressure (p - p ) = min. 3 bar (44 PSI)",
-   "Operating temperature limits for: EPDM -20 °C … +140 °C (-4 °F ... +284 °F) FFKM - 20 °C … +120 °C (-4 °F ... +248 °F) FKM -20 °C … +170 °C (-4 °F ... +338 °F) Speed = 4 … 15 m/s (13 ... 49 ft/s) Axial movement: ± 1.0 mm",
-
-
-  ]
+    "Shaft diameter: d1 = 30 … 100 mm (1.18 ... 3.94",
+    "Pressure: p1 = 13 bar (189 PSI), p3 = 16 bar (232 PSI) with V-grooves (uni-directional) p1 = 9 bar (131 PSI), p3 = 12 bar (174 PSI) with U-grooves (bi-directional) Differential pressure (p - p ) = min. 3 bar (44 PSI)",
+    "Operating temperature limits for: EPDM -20 °C … +140 °C (-4 °F ... +284 °F) FFKM - 20 °C … +120 °C (-4 °F ... +248 °F) FKM -20 °C … +170 °C (-4 °F ... +338 °F) Speed = 4 … 15 m/s (13 ... 49 ft/s) Axial movement: ± 1.0 mm"
+  ];
 
   const partsList = [
     { no: "1.9", description: "Seal Face" },
-    { no: "2,5,7,10,12,18", description: "	O-ring" },
+    { no: "2,5,7,10,12,18", description: "O-ring" },
     { no: "3", description: "Spring" },
     { no: "4,11", description: "Seat" },
-    { no: "6", description: "	Shaft sleeve" },
+    { no: "6", description: "Shaft sleeve" },
     { no: "8", description: "Cover" },
     { no: "13", description: "Adapter" },
     { no: "14", description: "Ring" },
     { no: "15", description: "Set screw" },
-    { no: "16", description: "	Retaining ring" },
+    { no: "16", description: "Retaining ring" },
     { no: "17", description: "Counter-sunk socket screw" },
     { no: "19", description: "Assembly fixture" },
-    { no: "20", description: "HSH Cap Screw"},
-    { no: "21", description: " Gasket CTX-GSDN dual gas seals" },
-    
-
-  ]
+    { no: "20", description: "HSH Cap Screw" },
+    { no: "21", description: "Gasket CTX-GSDN dual gas seals" }
+  ];
 
   const thumbnails = [
     "/assets/Ourproducts/gaslubricatedseals/ctx/image1.jpg",
     "/assets/Ourproducts/gaslubricatedseals/ctx/image2.jpg",
-    "/assets/Ourproducts/gaslubricatedseals/ctx/image3.jpg",
-  ]
+    "/assets/Ourproducts/gaslubricatedseals/ctx/image3.jpg"
+  ];
 
   return (
     <>
       <section
-        className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
-        style={{
-          backgroundImage: `url(${typeof window !== "undefined" && window.innerWidth >= 1024
-            ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
-            : typeof window !== "undefined" && window.innerWidth >= 768
-              ? "/assets/Contactpage/Herosection/heroimage-tab.png"
-              : "/assets/Contactpage/Herosection/heroimage-phone.png"
-            })`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] flex items-center justify-center mt-[20px]"
       >
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        ></div>
         {/* SVG for Large & Extra-Large Screens */}
         <div className="absolute top-0 right-0 hidden lg:block">
           <svg

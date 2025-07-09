@@ -1,13 +1,34 @@
-"use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import StandardMechanicalnavbar from "../Standardmechanicalnavbar/Standardmechanicalnavbar"
 
 const UG943Single= () => {
+
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/StandardMechanicalSeals/UG943/image1.jpg")
+
+  // Preload hero and product images for fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "/assets/Ourproducts/StandardMechanicalSeals/UG943/image1.jpg",
+      "/assets/Ourproducts/StandardMechanicalSeals/UG943/image2.jpg",
+      "/assets/Ourproducts/StandardMechanicalSeals/UG943/image3.jpg",
+      "/assets/Ourproducts/StandardMechanicalSeals/UG943/image4.jpg",
+      "/assets/Ourproducts/StandardMechanicalSeals/UG943/image5.jpg",
+    ];
+    [...heroImages, ...productImages].forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -83,6 +104,18 @@ const UG943Single= () => {
 
   return (
     <>
+      <Helmet>
+        <title>UG943/MG9 Single Unbalanced Seals | Standard Mechanical Seals | Renault</title>
+        <meta name="description" content="UG943/MG9 Single Unbalanced Seals: Unbalanced, rotary elastomer bellows design for plain shafts. Suitable for chemical, water, oil, and food industry pumps. See technical features, materials, and performance capabilities." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/UG943/image1.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/UG943/image2.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/UG943/image3.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/UG943/image4.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/UG943/image5.jpg" />
+      </Helmet>
       <section
         className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
         style={{
@@ -212,28 +245,34 @@ const UG943Single= () => {
           <div className="w-full lg:w-auto lg:pl-8 mt-8 lg:mt-0">
             {/* Product Images */}
             <div className="flex flex-col items-center gap-4 sm:gap-7 mb-8">
-              <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px]">
-                <img
-                  src={mainImage || "/placeholder.svg"}
-                  alt="MTX Dual Seal"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="flex gap-2 sm:gap-4">
-                {thumbnails.map((thumb, index) => (
-                  <div
-                    key={index}
-                    className="w-16 h-16 sm:w-20 sm:h-20 cursor-pointer border border-transparent hover:border-[#CF422A]"
-                    onClick={() => setMainImage(thumb)}
-                  >
-                    <img
-                      src={thumb || "/placeholder.svg"}
-                      alt={`MTX Dual Seal thumbnail ${index + 1}`}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                ))}
-              </div>
+            <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px]">
+              <img
+                src={mainImage || "/placeholder.svg"}
+                alt="UG943/MG9 Single Unbalanced Seal main product image"
+                className="w-full h-full object-contain"
+                loading="eager"
+                width="280"
+                height="280"
+              />
+            </div>
+            <div className="flex gap-2 sm:gap-4">
+              {thumbnails.map((thumb, index) => (
+                <div
+                  key={index}
+                  className="w-16 h-16 sm:w-20 sm:h-20 cursor-pointer border border-transparent hover:border-[#CF422A]"
+                  onClick={() => setMainImage(thumb)}
+                >
+                  <img
+                    src={thumb || "/placeholder.svg"}
+                    alt={`UG943/MG9 Single Unbalanced Seal thumbnail ${index + 1}`}
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                    width="80"
+                    height="80"
+                  />
+                </div>
+              ))}
+            </div>
             </div>
 
             {/* Accordion Sections */}

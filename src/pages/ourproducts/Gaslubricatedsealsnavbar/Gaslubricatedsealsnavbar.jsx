@@ -4,9 +4,9 @@ import { useState, useRef, useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 
 const menuItems = [
-  { name: "GSAZ Single & Dual Gas Seals", path: "/ourproducts/Gaslubricatedseals/GSAZSingle&DualGasSeals-AGSZ" },
-  { name: "CTX-GSDN Dual Gas Seals (For Pumps)", path: "/ourproducts/Gaslubricatedseals/CTXGSDN" },
-  { name: "GSPH-K Single & Dual Gas Seals (For Pumps)", path: "/ourproducts/Gaslubricatedseals/GSPHKSingle-CGSH-0K" },
+  { name: "GSAZ Single & Dual Gas Seals", path: "/our-products/Gaslubricatedseals/GSAZSingle-DualGasSeals-AGSZ" },
+  { name: "CTX-GSDN Dual Gas Seals (For Pumps)", path: "/our-products/Gaslubricatedseals/CTXGSDN" },
+  { name: "GSPH-K Single & Dual Gas Seals (For Pumps)", path: "/our-products/Gaslubricatedseals/GSPHKSingle-CGSH-K" },
 ]
 
 const Gaslubricatedsealsnavbar = () => {

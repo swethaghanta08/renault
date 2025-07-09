@@ -1,13 +1,31 @@
-"use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import StandardMechanicalnavbar from "../Standardmechanicalnavbar/Standardmechanicalnavbar"
 
 const UG100Single = () => {
+
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/StandardMechanicalSeals/UG100/image1.jpg")
+
+  // Preload hero and product images for SEO and fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "/assets/Ourproducts/StandardMechanicalSeals/UG100/image1.jpg",
+      "/assets/Ourproducts/StandardMechanicalSeals/UG100/image2.jpg",
+    ];
+    [...heroImages, ...productImages].forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -68,8 +86,18 @@ const UG100Single = () => {
     "/assets/Ourproducts/StandardMechanicalSeals/UG100/image2.jpg",
   ]
 
+
   return (
     <>
+      <Helmet>
+        <title>UG100/MG1 Single Unbalanced Seals | Standard Mechanical Seals | Renault</title>
+        <meta name="description" content="UG100/MG1 Single Unbalanced Seals: single seal configuration, unbalanced design, elastomer bellows, and more. Explore technical features, applications, and material options." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/UG100/image1.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/UG100/image2.jpg" />
+      </Helmet>
       <section
         className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
         style={{
@@ -84,7 +112,7 @@ const UG100Single = () => {
         }}
       >
         {/* SVG for Large & Extra-Large Screens */}
-        <div className="absolute top-0 right-0 hidden lg:block">
+        <div className="absolute top-0 right-0 hidden lg:block" aria-hidden="true">
           <svg
             className="lg:w-[700px] lg:h-[600px] xl:w-[870px]"
             viewBox="0 0 870 600"
@@ -96,14 +124,14 @@ const UG100Single = () => {
         </div>
 
         {/* SVG for Medium Screens */}
-        <div className="absolute top-0 right-0 hidden md:block lg:hidden">
+        <div className="absolute top-0 right-0 hidden md:block lg:hidden" aria-hidden="true">
           <svg className="w-[461px] h-[460px]" viewBox="0 0 461 460" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M461 460H0L143.271 214.263L276.795 0H461V460Z" fill="black" fillOpacity="0.6" />
           </svg>
         </div>
 
         {/* SVG for Phone Screens */}
-        <div className="absolute top-0 right-0 block md:hidden">
+        <div className="absolute top-0 right-0 block md:hidden" aria-hidden="true">
           <svg className="w-[251px] h-[320px]" viewBox="0 0 251 320" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M251 320H0L78.0063 149.053L150.706 0H251V320Z" fill="black" fillOpacity="0.6" />
           </svg>
@@ -111,13 +139,12 @@ const UG100Single = () => {
 
         {/* Content Box */}
         <div className="relative z-10 ml-[20px] sm:ml-[40px] mt-[80px] aboutcontentbox2 aboutcontentbox md:mt-[40px] w-[240px] h-[100px] md:w-[442px] md:h-[121px] md:ml-[100px] lg:ml-[240px] lg:h-[155px] lg:w-[605px] xl:ml-[570px] bg-white flex flex-col items-start p-6 sm:p-10 gap-0 shadow-lg">
-          {/* Heading */}
           <h2 className="text-black ml-[-10px] md:mt-[-20px] mt-[-20px] sm:ml-[-20px] font-[Monda] text-[18px] sm:text-[20px] md:text-[28px] lg:text-[36px] font-bold leading-[24px] sm:leading-[28px] md:leading-[50px] w-[216px] md:w-[402px] lg:w-[502px]">
             Standard Mechanical seals
           </h2>
           <div className="flex items-center mt-[-20px] ml-[-10px] sm:ml-[-20px] gap-2 md:mt-[-20px] lg:mt-[-10px]">
             <h4 className="text-[#CF422A] mt-[30px] xl:mt-[30px] font-[Monda] text-[12px] md:text-[20px] lg:text-[24px] lg:mt-[10px] font-bold leading-normal capitalize">
-            UG100/MG1 Single Unbalanced Seals
+              UG100/MG1 Single Unbalanced Seals
             </h4>
           </div>
         </div>
@@ -199,28 +226,34 @@ const UG100Single = () => {
           <div className="w-full lg:w-auto lg:pl-8 mt-8 lg:mt-0">
             {/* Product Images */}
             <div className="flex flex-col items-center gap-4 sm:gap-7 mb-8">
-              <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px]">
-                <img
-                  src={mainImage || "/placeholder.svg"}
-                  alt="MTX Dual Seal"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="flex gap-2 sm:gap-4">
-                {thumbnails.map((thumb, index) => (
-                  <div
-                    key={index}
-                    className="w-16 h-16 sm:w-20 sm:h-20 cursor-pointer border border-transparent hover:border-[#CF422A]"
-                    onClick={() => setMainImage(thumb)}
-                  >
-                    <img
-                      src={thumb || "/placeholder.svg"}
-                      alt={`MTX Dual Seal thumbnail ${index + 1}`}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                ))}
-              </div>
+            <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px]">
+              <img
+                src={mainImage || "/placeholder.svg"}
+                alt="UG100/MG1 Single Unbalanced Seal main product image"
+                className="w-full h-full object-contain"
+                loading="eager"
+                width="280"
+                height="280"
+              />
+            </div>
+            <div className="flex gap-2 sm:gap-4">
+              {thumbnails.map((thumb, index) => (
+                <div
+                  key={index}
+                  className="w-16 h-16 sm:w-20 sm:h-20 cursor-pointer border border-transparent hover:border-[#CF422A]"
+                  onClick={() => setMainImage(thumb)}
+                >
+                  <img
+                    src={thumb || "/placeholder.svg"}
+                    alt={`UG100/MG1 Single Unbalanced Seal thumbnail ${index + 1}`}
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                    width="80"
+                    height="80"
+                  />
+                </div>
+              ))}
+            </div>
             </div>
 
             {/* Accordion Sections */}

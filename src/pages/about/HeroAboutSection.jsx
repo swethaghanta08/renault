@@ -1,28 +1,48 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 
 const AboutHeroSection = () => {
   const [backgroundImage, setBackgroundImage] = useState("");
-
   useEffect(() => {
-    const updateBackground = () => {
-      const width = window.innerWidth;
-      let imagePath;
-      
-      if (width >= 1024) {
-        imagePath = "/assets/Aboutpage/Herosection/Heroimage.png";
-      } else if (width >= 768) {
-        imagePath = "/assets/Aboutpage/Herosection/Heroimage-medium.png";
-      } else {
-        imagePath = "/assets/Aboutpage/Herosection/Heroimage-phone.png";
-      }
-      
-      setBackgroundImage(imagePath);
-    };
+      const preloadImage = (src) => {
+        return new Promise((resolve, reject) => {
+          const img = new window.Image();
+          img.src = src;
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+      };
+  
+      const preloadAll = async () => {
+        const images = [
+          "/assets/Aboutpage/Herosection/Heroimage.png",
+          "/assets/Aboutpage/Herosection/Heroimage-medium.png",
+          "/assets/Aboutpage/Herosection/Heroimage-phone.png",
+        ];
+  
+        try {
+          await Promise.all(images.map(preloadImage));
+        } catch (e) {
+          console.warn("Some images failed to preload", e);
+        }
+  
+        // Now set the current background
+        const width = window.innerWidth;
+        let imagePath;
+  
+        if (width >= 1024) {
+          imagePath = images[0];
+        } else if (width >= 768) {
+          imagePath = images[1];
+        } else {
+          imagePath = images[2];
+        }
+  
+        setBackgroundImage(imagePath);
+      };
+  
+      preloadAll();
+    }, []);
 
-    updateBackground();
-    window.addEventListener("resize", updateBackground);
-    return () => window.removeEventListener("resize", updateBackground);
-  }, []);
 
   return (
     <section

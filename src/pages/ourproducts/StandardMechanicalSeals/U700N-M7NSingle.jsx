@@ -1,13 +1,31 @@
-"use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import StandardMechanicalnavbar from "../Standardmechanicalnavbar/Standardmechanicalnavbar"
 
 const U700NSingle = () => {
+
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/StandardMechanicalSeals/U700singlrunbalanced/image1.jpg")
+
+  // Preload hero and product images for SEO and performance
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "/assets/Ourproducts/StandardMechanicalSeals/U700singlrunbalanced/image1.jpg",
+      "/assets/Ourproducts/StandardMechanicalSeals/U700singlrunbalanced/image2.jpg",
+    ];
+    [...heroImages, ...productImages].forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -83,6 +101,15 @@ const U700NSingle = () => {
 
   return (
     <>
+      <Helmet>
+        <title>U700N/M7N Single Unbalanced Seals | Standard Mechanical Seals | Renault</title>
+        <meta name="description" content="U700N/M7N Single Unbalanced Seals: Single seal configuration, unbalanced design, versatile applications. Learn more about features, materials, and performance capabilities." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/U700singlrunbalanced/image1.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/U700singlrunbalanced/image2.jpg" />
+      </Helmet>
       <section
         className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
         style={{
@@ -215,8 +242,9 @@ const U700NSingle = () => {
               <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px]">
                 <img
                   src={mainImage || "/placeholder.svg"}
-                  alt="MTX Dual Seal"
+                  alt="U700N/M7N Single Unbalanced Seal main product image"
                   className="w-full h-full object-contain"
+                  loading="eager"
                 />
               </div>
               <div className="flex gap-2 sm:gap-4">
@@ -228,8 +256,9 @@ const U700NSingle = () => {
                   >
                     <img
                       src={thumb || "/placeholder.svg"}
-                      alt={`MTX Dual Seal thumbnail ${index + 1}`}
+                      alt={`U700N/M7N Single Unbalanced Seal thumbnail ${index + 1}`}
                       className="w-full h-full object-contain"
+                      loading="lazy"
                     />
                   </div>
                 ))}

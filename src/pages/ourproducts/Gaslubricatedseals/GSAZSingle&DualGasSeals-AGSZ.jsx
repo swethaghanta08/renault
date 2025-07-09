@@ -1,6 +1,5 @@
-"use client"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import Gaslubricatedsealsnavbar from "../Gaslubricatedsealsnavbar/Gaslubricatedsealsnavbar"
@@ -8,6 +7,36 @@ import Gaslubricatedsealsnavbar from "../Gaslubricatedsealsnavbar/Gaslubricateds
 const GSAZSingleDualGasSeals = () => {
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/gaslubricatedseals/gsazsingle/image1.png")
+  const [backgroundImage, setBackgroundImage] = useState("")
+
+  // Preload hero and product images for SEO and fast rendering
+  useEffect(() => {
+    const preloadImage = (src) => {
+      const img = new window.Image();
+      img.src = src;
+    };
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    heroImages.forEach(preloadImage);
+    [
+      "/assets/Ourproducts/gaslubricatedseals/gsazsingle/image1.png",
+      "/assets/Ourproducts/gaslubricatedseals/gsazsingle/image2.jpg",
+      "/assets/Ourproducts/gaslubricatedseals/gsazsingle/image3.jpg"
+    ].forEach(preloadImage);
+    const width = window.innerWidth;
+    let imagePath;
+    if (width >= 1024) {
+      imagePath = heroImages[0];
+    } else if (width >= 768) {
+      imagePath = heroImages[1];
+    } else {
+      imagePath = heroImages[2];
+    }
+    setBackgroundImage(imagePath);
+  }, []);
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -71,15 +100,20 @@ const GSAZSingleDualGasSeals = () => {
 
   return (
     <>
+      <Helmet>
+        <title>GSAZ Single & Dual Gas Seals/AGSZ | Gas Lubricated Seals | Renault</title>
+        <meta name="description" content="GSAZ Single & Dual Gas Seals/AGSZ: Dual seal configuration, balanced design, cartridge construction, and gas-lubricated for top entry vessels. Learn more about features, applications, and standards." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/gaslubricatedseals/gsazsingle/image1.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/gaslubricatedseals/gsazsingle/image2.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/gaslubricatedseals/gsazsingle/image3.jpg" />
+      </Helmet>
       <section
         className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
         style={{
-          backgroundImage: `url(${typeof window !== "undefined" && window.innerWidth >= 1024
-            ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
-            : typeof window !== "undefined" && window.innerWidth >= 768
-              ? "/assets/Contactpage/Herosection/heroimage-tab.png"
-              : "/assets/Contactpage/Herosection/heroimage-phone.png"
-            })`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

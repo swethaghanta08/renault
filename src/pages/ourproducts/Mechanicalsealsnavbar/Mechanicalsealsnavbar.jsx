@@ -4,12 +4,12 @@ import { useState, useRef, useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 
 const menuItems = [
-  { name: "BSHLU-D Dual Seals (Bottom Entry) – 50 bars", path: "/ourproducts/Mechanicalseals/BSHLU" },
-  { name: "BSH-D Dual Seals (Top Entry) – 250 bars", path: "/ourproducts/Mechanicalseals/BSH" },
-  { name: "U184 Single & Dual Seals (Top Entry)", path: "/ourproducts/Mechanicalseals/U184-SeccoMix481" },
-  { name: "U164 Single & Dual Seals (Top-side Entry)", path: "/ourproducts/Mechanicalseals/U164-SeccoMix461" },
-  { name: "UR-D Dual Seals", path: "/ourproducts/Mechanicalseals/UR" },
-  { name: "MXS Single & Dual Seals (Top-side Entry)", path: "/ourproducts/Mechanicalseals/MXS-SeccoMix1" },
+  { name: "BSHLU-D Dual Seals (Bottom Entry) – 50 bars", path: "/our-products/Mechanicalseals/BSHLU" },
+  { name: "BSH-D Dual Seals (Top Entry) – 250 bars", path: "/our-products/Mechanicalseals/BSH" },
+  { name: "U184 Single & Dual Seals (Top Entry)", path: "/our-products/Mechanicalseals/U184-SeccoMix481" },
+  { name: "U164 Single & Dual Seals (Top-side Entry)", path: "/our-products/Mechanicalseals/U164-SeccoMix461" },
+  { name: "UR-D Dual Seals", path: "/our-products/Mechanicalseals/UR" },
+  { name: "MXS Single & Dual Seals (Top-side Entry)", path: "/our-products/Mechanicalseals/MXS-SeccoMix1" },
 ]
 
 const Mechanicalsealsnavbar = () => {

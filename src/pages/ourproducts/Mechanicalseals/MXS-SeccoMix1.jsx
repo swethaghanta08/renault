@@ -1,6 +1,5 @@
-"use client"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import Mechanicalsealsnavbar from "../Mechanicalsealsnavbar/Mechanicalsealsnavbar"
@@ -8,21 +7,49 @@ import Mechanicalsealsnavbar from "../Mechanicalsealsnavbar/Mechanicalsealsnavba
 const MXS = () => {
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/Mechanicalseals/mxssingle/image1.jpg")
+  const [backgroundImage, setBackgroundImage] = useState("")
+
+  useEffect(() => {
+    const preloadImage = (src) => {
+      const img = new window.Image();
+      img.src = src;
+    };
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    heroImages.forEach(preloadImage);
+    [
+      "/assets/Ourproducts/Mechanicalseals/mxssingle/image1.jpg",
+      "/assets/Ourproducts/Mechanicalseals/mxssingle/image2.jpg"
+    ].forEach(preloadImage);
+    const width = window.innerWidth;
+    let imagePath;
+    if (width >= 1024) {
+      imagePath = heroImages[0];
+    } else if (width >= 768) {
+      imagePath = heroImages[1];
+    } else {
+      imagePath = heroImages[2];
+    }
+    setBackgroundImage(imagePath);
+  }, []);
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
   }
 
   const productFeatures = [
-    " Single and Dual seal configuration",
+    "Single and Dual seal configuration",
     "Balanced design",
     "Independent of direction of rotation",
     "Cartridge construction",
-   "Designed for bottom entry vessels",
-   "Design of the product side seat is rotary",
-"Rotary unit with multiple springs",
-"MXS Single & Dual Seals (Top-side Entry)"  
-]
+    "Designed for bottom entry vessels",
+    "Design of the product side seat is rotary",
+    "Rotary unit with multiple springs",
+    "MXS Single & Dual Seals (Top-side Entry)"
+  ];
 
   const technicalFeatures = [
   "Over all connecting dimensions are tailor made to customer's specifications",
@@ -44,11 +71,11 @@ const MXS = () => {
  "Reactors"
   ]
 
-  const materialOptions = ["Seal face: Carbon graphite, FDA conform",
+  const materialOptions = [
+    "Seal face: Carbon graphite, FDA conform",
     "Seat: Silicon carbide (Q1)",
-    "Secondary seals and metal parts according to application and customer's specifications",
-  
-   ]
+    "Secondary seals and metal parts according to application and customer's specifications"
+  ];
 
   const performanceCapabilities = [
 "Sizes: d1 = Upto 160 mm (Upto 6.500’’)",
@@ -70,24 +97,28 @@ const MXS = () => {
 
   const thumbnails = [
     "/assets/Ourproducts/Mechanicalseals/mxssingle/image1.jpg",
-    "/assets/Ourproducts/Mechanicalseals/mxssingle/image2.jpg",
-  ]
-
+    "/assets/Ourproducts/Mechanicalseals/mxssingle/image2.jpg"
+  ];
   return (
     <>
+      <Helmet>
+        <title>MXS Single & Dual Seals (Top-side Entry)/SeccoMix1 | Mechanical Seals | Renault</title>
+        <meta name="description" content="MXS Single & Dual Seals (Top-side Entry): Single and dual seal configuration, balanced design, cartridge construction, and rotary unit with multiple springs. Learn more about features, applications, and standards." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Mechanicalseals/mxssingle/image1.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Mechanicalseals/mxssingle/image2.jpg" />
+      </Helmet>
       <section
         className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
         style={{
-          backgroundImage: `url(${typeof window !== "undefined" && window.innerWidth >= 1024
-            ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
-            : typeof window !== "undefined" && window.innerWidth >= 768
-              ? "/assets/Contactpage/Herosection/heroimage-tab.png"
-              : "/assets/Contactpage/Herosection/heroimage-phone.png"
-            })`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
+      
         {/* SVG for Large & Extra-Large Screens */}
         <div className="absolute top-0 right-0 hidden lg:block">
           <svg

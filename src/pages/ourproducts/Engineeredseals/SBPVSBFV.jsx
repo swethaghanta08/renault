@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import Engineeredsealsnavbar from "../Engineeredsealsnavbar/Engineeredsealsnavbar"
@@ -8,6 +8,43 @@ import Engineeredsealsnavbar from "../Engineeredsealsnavbar/Engineeredsealsnavba
 const SBPVSBFV = () => {
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/Engineeredseals/Sbpvspfv/image1.jpg")
+  const [backgroundImage, setBackgroundImage] = useState("")
+
+  // Preload hero images for fast background switching
+  useEffect(() => {
+    const preloadImage = (src) => {
+      return new Promise((resolve, reject) => {
+        const img = new window.Image();
+        img.src = src;
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+    };
+
+    const preloadAll = async () => {
+      const images = [
+        "/assets/Contactpage/Herosection/heroimage-desktop.png",
+        "/assets/Contactpage/Herosection/heroimage-tab.png",
+        "/assets/Contactpage/Herosection/heroimage-phone.png",
+      ];
+      try {
+        await Promise.all(images.map(preloadImage));
+      } catch (e) {
+        // Ignore failed preloads for speed
+      }
+      const width = window.innerWidth;
+      let imagePath;
+      if (width >= 1024) {
+        imagePath = images[0];
+      } else if (width >= 768) {
+        imagePath = images[1];
+      } else {
+        imagePath = images[2];
+      }
+      setBackgroundImage(imagePath);
+    };
+    preloadAll();
+  }, []);
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -86,18 +123,12 @@ const SBPVSBFV = () => {
   return (
     <>
       <section
-        className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
-        style={{
-          backgroundImage: `url(${typeof window !== "undefined" && window.innerWidth >= 1024
-            ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
-            : typeof window !== "undefined" && window.innerWidth >= 768
-              ? "/assets/Contactpage/Herosection/heroimage-tab.png"
-              : "/assets/Contactpage/Herosection/heroimage-phone.png"
-            })`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] flex items-center justify-center mt-[20px]"
       >
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        ></div>
         {/* SVG for Large & Extra-Large Screens */}
         <div className="absolute top-0 right-0 hidden lg:block">
           <svg

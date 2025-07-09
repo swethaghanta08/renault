@@ -1,13 +1,29 @@
-import React from "react";
+
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Footer from "../home/Footer";
 import StandardMechanicalnavbar from "./Standardmechanicalnavbar/Standardmechanicalnavbar";
 
 const BearingIsollators = () => {
-  const bgImage =
-    window.innerWidth >= 1024
-      ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
-      : window.innerWidth >= 768
+  // Preload hero and product images for SEO and fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "image1.png", "image2.jpg", "image3.jpg"
+    ].map(img => `/assets/Ourproducts/bearingisolators/${img}`);
+    [...heroImages, ...productImages].forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
+
+  const bgImage = typeof window !== "undefined" && window.innerWidth >= 1024
+    ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
+    : typeof window !== "undefined" && window.innerWidth >= 768
       ? "/assets/Contactpage/Herosection/heroimage-tab.png"
       : "/assets/Contactpage/Herosection/heroimage-phone.png";
 
@@ -20,10 +36,13 @@ const BearingIsollators = () => {
           name="description"
           content="Explore Renault Engineers' top-quality bearing isolators for optimal protection. Enhance your equipment's performance and reliability with our expert solutions."
         />
-        <link
-          rel="canonical"
-          href="https://renaultengineers.com/our-products/bearing-isolators"
-        />
+        <link rel="canonical" href="https://renaultengineers.com/our-products/bearing-isolators" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/bearingisolators/image1.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/bearingisolators/image2.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/bearingisolators/image3.jpg" />
       </Helmet>
 
       {/* Hero Section */}
@@ -169,6 +188,8 @@ const BearingIsollators = () => {
                 maxHeight: "180px",
                 width: "100%",
               }}
+              aria-label={`Bearing Isolators product image ${idx + 1}`}
+              role="img"
             />
           ))}
         </div>

@@ -1,10 +1,12 @@
+import React, { Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet';
 import HeroSection from '../pages/home/Herocontainer';
 import AboutEngineer from '../pages/home/Aboutrenaultengineers';
-import Carousel from '../pages/home/Casurosel';
-import TrustedClients from '../pages/home/Deliveringexcellence';
-import ContactSection from '../pages/home/Getintouch';
-import Footer from '../pages/home/Footer';
+
+const Carousel = lazy(() => import('../pages/home/Casurosel'));
+const TrustedClients = lazy(() => import('../pages/home/Deliveringexcellence'));
+const ContactSection = lazy(() => import('../pages/home/Getintouch'));
+const Footer = lazy(() => import('../pages/home/Footer'));
 
 const Homepage = () => {
   return (
@@ -16,14 +18,29 @@ const Homepage = () => {
           content="Renault Engineers is a leading manufacturer of mechanical seals in Hyderabad. Specializing in cartridge seals and providing industrial engineering services."
         />
         <link rel="canonical" href="https://renaultengineers.com/" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/HeroImage.jpg"
+          type="image/jpeg"
+        />
+        <link
+          rel="preload"
+          href="/fonts/monda.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </Helmet>
 
       <HeroSection />
       <AboutEngineer />
-      <Carousel />
-      <TrustedClients />
-      <ContactSection />
-      <Footer />
+      <Suspense fallback={<div style={{ height: '100px' }}></div>}>
+        <Carousel />
+        <TrustedClients />
+        <ContactSection />
+        <Footer />
+      </Suspense>
     </div>
   );
 };

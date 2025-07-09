@@ -6,19 +6,19 @@ import { useNavigate, useLocation } from "react-router-dom"
 const menuItems = [
   {
     name: "CTX ANSI Single Seals",
-    path: "/ourproducts/StandardCartridgeSeals/CTXANSISingleSeals-Cartex-ansi-single-seals",
+    path: "/our-products/StandardCartridgeSeals/CTXANSISingleSeals-Cartex-ansi-single-seals",
   },
-  { name: "CTX ANSI Dual Seals", path: "/ourproducts/StandardCartridgeSeals/CTXANSIDualSeals-Cartex-ansi-dual-seals" },
-  { name: "CTX Single Seals", path: "/ourproducts/StandardCartridgeSeals/CTXSingleSeals-Cartex-single-seal" },
-  { name: "CTX Dual Seals", path: "/ourproducts/StandardCartridgeSeals/CTXDualSeals-Cartex-dual-seal" },
-  { name: "MTX Single Seals", path: "/ourproducts/StandardCartridgeSeals/MTXSingleSeals-Mtex-Single-Seals" },
-  { name: "MTX Dual Seals", path: "/ourproducts/StandardCartridgeSeals/MTXDualSeals-Mtex-Dual-Seals" },
-  { name: "VTX Single Seals", path: "/ourproducts/StandardCartridgeSeals/VTXSingleSeals" },
-  { name: "VTX Dual Seals", path: "/ourproducts/StandardCartridgeSeals/VTXDualSeals" },
-  { name: "ETX Single Seals", path: "/ourproducts/StandardCartridgeSeals/ETXSingleSeals" },
-  { name: "UTX Single Bellow Seals", path: "/ourproducts/StandardCartridgeSeals/UTXSingleBellowSeals-Unitex" },
-  { name: "B750VN", path: "/ourproducts/StandardCartridgeSeals/B750VN-H75VN" },
-  { name: "B550VN Dual Seals", path: "/ourproducts/StandardCartridgeSeals/B550VNDualSeals" },
+  { name: "CTX ANSI Dual Seals", path: "/our-products/StandardCartridgeSeals/CTXANSIDualSeals-Cartex-ansi-dual-seals" },
+  { name: "CTX Single Seals", path: "/our-products/StandardCartridgeSeals/CTXSingleSeals-Cartex-single-seal" },
+  { name: "CTX Dual Seals", path: "/our-products/StandardCartridgeSeals/CTXDualSeals-Cartex-dual-seal" },
+  { name: "MTX Single Seals", path: "/our-products/StandardCartridgeSeals/MTXSingleSeals-Mtex-Single-Seals" },
+  { name: "MTX Dual Seals", path: "/our-products/StandardCartridgeSeals/MTXDualSeals-Mtex-Dual-Seals" },
+  { name: "VTX Single Seals", path: "/our-products/StandardCartridgeSeals/VTXSingleSeals" },
+  { name: "VTX Dual Seals", path: "/our-products/StandardCartridgeSeals/VTXDualSeals" },
+  { name: "ETX Single Seals", path: "/our-products/StandardCartridgeSeals/ETXSingleSeals" },
+  { name: "UTX Single Bellow Seals", path: "/our-products/StandardCartridgeSeals/UTXSingleBellowSeals-Unitex" },
+  { name: "B750VN", path: "/our-products/StandardCartridgeSeals/B750VN-H75VN" },
+  { name: "B550VN Dual Seals", path: "/our-products/StandardCartridgeSeals/B550VNDualSeals" },
 ]
 
 const StandardCartridgeNavbar = () => {

@@ -1,13 +1,25 @@
-"use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import Mechanicalsealsnavbar from "../Mechanicalsealsnavbar/Mechanicalsealsnavbar"
-
 const UR = () => {
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/Mechanicalseals/urddualseals/image1.jpg")
+  useEffect(() => {
+    const imagesToPreload = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+      "/assets/Ourproducts/Mechanicalseals/urddualseals/image1.jpg",
+      "/assets/Ourproducts/Mechanicalseals/urddualseals/image2.jpg"
+    ]
+    imagesToPreload.forEach((src) => {
+      const img = new window.Image()
+      img.src = src
+    })
+  }, [])
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -84,6 +96,15 @@ const UR = () => {
 
   return (
     <>
+      <Helmet>
+        <title>UR-D Dual Seals | Mechanical Seals | Renault</title>
+        <meta name="description" content="UR-D Dual Seals: Dual seal, unbalanced, cartridge construction, for bottom entry vessels, food, pharma, chemical industry. Technical features, applications, materials, and standards." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Mechanicalseals/urddualseals/image1.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Mechanicalseals/urddualseals/image2.jpg" />
+      </Helmet>
       <section
         className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
         style={{
@@ -216,8 +237,9 @@ const UR = () => {
               <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px]">
                 <img
                   src={mainImage || "/placeholder.svg"}
-                  alt="MTX Dual Seal"
+                  alt="UR-D Dual Seal main image"
                   className="w-full h-full object-contain"
+                  loading="eager"
                 />
               </div>
               <div className="flex gap-2 sm:gap-4">
@@ -229,8 +251,9 @@ const UR = () => {
                   >
                     <img
                       src={thumb || "/placeholder.svg"}
-                      alt={`MTX Dual Seal thumbnail ${index + 1}`}
+                      alt={`UR-D Dual Seal thumbnail ${index + 1}`}
                       className="w-full h-full object-contain"
+                      loading="lazy"
                     />
                   </div>
                 ))}

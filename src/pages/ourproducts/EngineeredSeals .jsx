@@ -1,9 +1,26 @@
-import React from "react"
+
+import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 import Footer from "../home/Footer"
 import Engineeredsealsnavbar from "./Engineeredsealsnavbar/Engineeredsealsnavbar"
 
 const EngineeredSeals = () => {
+  // Preload hero and product images for SEO and fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "/assets/Ourproducts/Engineeredseals/main/image1.jpg"
+    ];
+    [...heroImages, ...productImages].forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
+
   return (
     <div>
       {/* SEO Meta Tags */}
@@ -13,20 +30,20 @@ const EngineeredSeals = () => {
           name="description"
           content="Renault Engineers provide the best Custom-engineered mechanical seals for extreme applications. We deliver precision, durability, and reliable sealing solutions."
         />
-        <link
-          rel="canonical"
-          href="https://renaultengineers.com/our-products/engineered-seals"
-        />
+        <link rel="canonical" href="https://renaultengineers.com/our-products/engineered-seals" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Engineeredseals/main/image1.jpg" />
       </Helmet>
 
       {/* Hero Section */}
       <section
         className="relative xl:max-w-[1440px] lg:max-w-[1024px] md:max-w-[768px] h-[320px] md:h-[460px] lg:h-[600px] xl:w-[1440px] mt-[20px] mx-auto w-full bg-cover bg-center flex items-center justify-center"
         style={{
-          backgroundImage: `url(${
-            window.innerWidth >= 1024
-              ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
-              : window.innerWidth >= 768
+          backgroundImage: `url(${typeof window !== "undefined" && window.innerWidth >= 1024
+            ? "/assets/Contactpage/Herosection/heroimage-desktop.png"
+            : typeof window !== "undefined" && window.innerWidth >= 768
               ? "/assets/Contactpage/Herosection/heroimage-tab.png"
               : "/assets/Contactpage/Herosection/heroimage-phone.png"
           })`,
@@ -121,6 +138,8 @@ const EngineeredSeals = () => {
                 width: "100%",
                 height: "100%",
               }}
+              aria-label="Engineered Seals product image 1"
+              role="img"
             ></div>
           </div>
         </div>

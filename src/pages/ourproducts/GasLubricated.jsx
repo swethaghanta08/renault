@@ -1,9 +1,29 @@
-import React from "react";
+
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Footer from "../home/Footer";
 import Gaslubricatedsealsnavbar from "./Gaslubricatedsealsnavbar/Gaslubricatedsealsnavbar";
 
 const GasLubricated = () => {
+  // Preload hero and product images for SEO and fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "/assets/Ourproducts/gaslubricatedseals/main/image1.png",
+      "/assets/Ourproducts/gaslubricatedseals/main/image2.jpg",
+      "/assets/Ourproducts/gaslubricatedseals/main/image3.jpg",
+      "/assets/Ourproducts/gaslubricatedseals/main/image4.jpg"
+    ];
+    [...heroImages, ...productImages].forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
+
   return (
     <div>
       {/* SEO Meta Tags */}
@@ -13,10 +33,14 @@ const GasLubricated = () => {
           name="description"
           content="Discover high-performance gas lubricated seals for pumps and agitators at Renault Engineers. Enhance efficiency and reliability in your operations today!"
         />
-        <link
-          rel="canonical"
-          href="https://renaultengineers.com/our-products/gas-lubricated"
-        />
+        <link rel="canonical" href="https://renaultengineers.com/our-products/gas-lubricated" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/gaslubricatedseals/main/image1.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/gaslubricatedseals/main/image2.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/gaslubricatedseals/main/image3.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/gaslubricatedseals/main/image4.jpg" />
       </Helmet>
 
       {/* Hero Section */}
@@ -92,50 +116,22 @@ const GasLubricated = () => {
         {/* Product Images */}
         <div className="max-w-[1000px] mx-auto mt-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-            <div
-              className="bg-cover bg-center bg-no-repeat rounded-sm"
-              style={{
-                backgroundImage: "url('/assets/Ourproducts/gaslubricatedseals/main/image1.png')",
-                aspectRatio: "1/1",
-                maxWidth: "180px",
-                maxHeight: "180px",
-                width: "100%",
-                height: "100%",
-              }}
-            ></div>
-            <div
-              className="bg-cover bg-center bg-no-repeat rounded-sm"
-              style={{
-                backgroundImage: "url('/assets/Ourproducts/gaslubricatedseals/main/image2.jpg')",
-                aspectRatio: "1/1",
-                maxWidth: "180px",
-                maxHeight: "180px",
-                width: "100%",
-                height: "100%",
-              }}
-            ></div>
-            <div
-              className="bg-cover bg-center bg-no-repeat rounded-sm"
-              style={{
-                backgroundImage: "url('/assets/Ourproducts/gaslubricatedseals/main/image3.jpg')",
-                aspectRatio: "1/1",
-                maxWidth: "180px",
-                maxHeight: "180px",
-                width: "100%",
-                height: "100%",
-              }}
-            ></div>
-            <div
-              className="bg-cover bg-center bg-no-repeat rounded-sm"
-              style={{
-                backgroundImage: "url('/assets/Ourproducts/gaslubricatedseals/main/image4.jpg')",
-                aspectRatio: "1/1",
-                maxWidth: "180px",
-                maxHeight: "180px",
-                width: "100%",
-                height: "100%",
-              }}
-            ></div>
+            {["image1.png", "image2.jpg", "image3.jpg", "image4.jpg"].map((img, idx) => (
+              <div
+                key={idx}
+                className="bg-cover bg-center bg-no-repeat rounded-sm"
+                style={{
+                  backgroundImage: `url('/assets/Ourproducts/gaslubricatedseals/main/${img}')`,
+                  aspectRatio: "1/1",
+                  maxWidth: "180px",
+                  maxHeight: "180px",
+                  width: "100%",
+                  height: "100%",
+                }}
+                aria-label={`Gas Lubricated Seals product image ${idx + 1}`}
+                role="img"
+              ></div>
+            ))}
           </div>
         </div>
       </div>

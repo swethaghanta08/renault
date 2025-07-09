@@ -1,13 +1,31 @@
-"use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import StandardMechanicalnavbar from "../Standardmechanicalnavbar/Standardmechanicalnavbar"
 
 const BJ920NSingle = () => {
+
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/StandardMechanicalSeals/BJ920/image1.jpg")
+
+  // Preload hero and product images for SEO and performance
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png"
+    ]
+    const productImages = [
+      "/assets/Ourproducts/StandardMechanicalSeals/BJ920/image1.jpg",
+      "/assets/Ourproducts/StandardMechanicalSeals/BJ920/image2.jpg"
+    ]
+    ;[...heroImages, ...productImages].forEach(src => {
+      const img = new window.Image()
+      img.src = src
+    })
+  }, [])
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -73,6 +91,15 @@ const BJ920NSingle = () => {
 
   return (
     <>
+      <Helmet>
+        <title>BJ920N/HJ92N Single Balanced Seals | Standard Mechanical Seals | Renault</title>
+        <meta name="description" content="BJ920N/HJ92N Single Balanced Seals: single seal configuration, balanced design, rugged construction, and high performance for industrial applications. See features, materials, and technical details." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/BJ920/image1.jpg" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/StandardMechanicalSeals/BJ920/image2.jpg" />
+      </Helmet>
       <section
         className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
         style={{
@@ -85,9 +112,9 @@ const BJ920NSingle = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
+        aria-label="BJ920N/HJ92N Single Balanced Seals hero section"
       >
-        {/* SVG for Large & Extra-Large Screens */}
-        <div className="absolute top-0 right-0 hidden lg:block">
+        <div className="absolute top-0 right-0 hidden lg:block" aria-hidden="true">
           <svg
             className="lg:w-[700px] lg:h-[600px] xl:w-[870px]"
             viewBox="0 0 870 600"
@@ -97,24 +124,18 @@ const BJ920NSingle = () => {
             <path d="M870 600H0L270.381 279.474L522.368 0H870V600Z" fill="black" fillOpacity="0.6" />
           </svg>
         </div>
-
-        {/* SVG for Medium Screens */}
-        <div className="absolute top-0 right-0 hidden md:block lg:hidden">
+        <div className="absolute top-0 right-0 hidden md:block lg:hidden" aria-hidden="true">
           <svg className="w-[461px] h-[460px]" viewBox="0 0 461 460" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M461 460H0L143.271 214.263L276.795 0H461V460Z" fill="black" fillOpacity="0.6" />
           </svg>
         </div>
-
-        {/* SVG for Phone Screens */}
-        <div className="absolute top-0 right-0 block md:hidden">
+        <div className="absolute top-0 right-0 block md:hidden" aria-hidden="true">
           <svg className="w-[251px] h-[320px]" viewBox="0 0 251 320" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M251 320H0L78.0063 149.053L150.706 0H251V320Z" fill="black" fillOpacity="0.6" />
           </svg>
         </div>
 
-        {/* Content Box */}
         <div className="relative z-10 ml-[20px] sm:ml-[40px] mt-[80px] aboutcontentbox2 aboutcontentbox md:mt-[40px] w-[240px] h-[100px] md:w-[442px] md:h-[121px] md:ml-[100px] lg:ml-[240px] lg:h-[155px] lg:w-[605px] xl:ml-[570px] bg-white flex flex-col items-start p-6 sm:p-10 gap-0 shadow-lg">
-          {/* Heading */}
           <h2 className="text-black ml-[-10px] md:mt-[-20px] mt-[-20px] sm:ml-[-20px] font-monda text-[18px] sm:text-[20px] md:text-[28px] lg:text-[36px] font-bold leading-[24px] sm:leading-[28px] md:leading-[50px] w-[216px] md:w-[402px] lg:w-[502px]">
             Standard Mechanical seals
           </h2>
@@ -126,12 +147,10 @@ const BJ920NSingle = () => {
         </div>
       </section>
 
-      {/* Navbar Below Hero Section */}
       <div className="max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px]  mx-auto">
         <StandardMechanicalnavbar />
       </div>
 
-      {/* Product Detail Section */}
       <section className="max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 xl:px-32 py-8 md:py-12">
         <div className="flex flex-col lg:flex-row gap-8 md:gap-16 lg:gap-28">
           {/* Left Side - Product Info */}
@@ -205,8 +224,9 @@ const BJ920NSingle = () => {
               <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px]">
                 <img
                   src={mainImage || "/placeholder.svg"}
-                  alt="MTX Dual Seal"
+                  alt="BJ920N/HJ92N Single Balanced Seal main product image"
                   className="w-full h-full object-contain"
+                  loading="eager"
                 />
               </div>
               <div className="flex gap-2 sm:gap-4">
@@ -218,8 +238,9 @@ const BJ920NSingle = () => {
                   >
                     <img
                       src={thumb || "/placeholder.svg"}
-                      alt={`MTX Dual Seal thumbnail ${index + 1}`}
+                      alt={`BJ920N/HJ92N Single Balanced Seal thumbnail ${index + 1}`}
                       className="w-full h-full object-contain"
+                      loading="lazy"
                     />
                   </div>
                 ))}

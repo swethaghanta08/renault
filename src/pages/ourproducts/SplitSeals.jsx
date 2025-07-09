@@ -1,9 +1,26 @@
-import React from "react";
+
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Footer from "../home/Footer";
 import Splitsealsnavbar from "./Splitsealsnavbar/Splitsealsnavbar";
 
 const SplitSeals = () => {
+  // Preload hero and product images for SEO and fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "/assets/Ourproducts/Splitseals/main/image1.jpg"
+    ];
+    [...heroImages, ...productImages].forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
+
   return (
     <div>
       {/* SEO Meta Tags */}
@@ -13,10 +30,11 @@ const SplitSeals = () => {
           name="description"
           content="Find the perfect split mechanical seals for your pumps and mixers at Renault Engineers. Trust our expertise for reliable and efficient sealing solutions!"
         />
-        <link
-          rel="canonical"
-          href="https://renaultengineers.com/our-products/split-seals"
-        />
+        <link rel="canonical" href="https://renaultengineers.com/our-products/split-seals" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Splitseals/main/image1.jpg" />
       </Helmet>
 
       {/* Hero Section */}
@@ -105,6 +123,8 @@ const SplitSeals = () => {
                 width: "100%",
                 height: "100%",
               }}
+              aria-label="Split Seals product image 1"
+              role="img"
             ></div>
           </div>
         </div>

@@ -1,50 +1,50 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [hoveredIcon, setHoveredIcon] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Handle scroll detection
     const handleScroll = () => {
-      const heroSection = document.getElementById("hero-section")
+      const heroSection = document.getElementById("hero-section");
       if (heroSection) {
-        const heroBottom = heroSection.getBoundingClientRect().bottom
-        setIsScrolled(heroBottom < 0)
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        setIsScrolled(heroBottom < 0);
       }
-    }
+    };
 
     // Add ID to hero section if not present
-    const heroElement = document.getElementById("hero-section")
+    const heroElement = document.getElementById("hero-section");
     if (!heroElement) {
-      const possibleHeroElement = document.querySelector(".hero-container")
+      const possibleHeroElement = document.querySelector(".hero-container");
       if (possibleHeroElement && !possibleHeroElement.id) {
-        possibleHeroElement.id = "hero-section"
+        possibleHeroElement.id = "hero-section";
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    handleScroll()
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
 
     // Simulate loading completion
     const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 20) // Quick loading time for better UX
+      setIsLoading(false);
+    }, 20); // Quick loading time for better UX
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-      clearTimeout(timer)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
+    };
+  }, []);
 
   // WhatsApp link configuration
-  const whatsappNumber = "919948832220"
-  const whatsappMessage = "Hello! I'm interested in your sealing solutions."
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
+  const whatsappNumber = "919948832220";
+  const whatsappMessage = "Hello! I'm interested in your sealing solutions.";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   // Loading skeleton
   if (isLoading) {
@@ -84,14 +84,14 @@ const HeroSection = () => {
         {/* WhatsApp Button Skeleton - Small */}
         <div className="absolute right-4 bottom-4 z-10 flex lg:hidden w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 animate-pulse"></div>
       </div>
-    )
+    );
   }
 
   // Actual content
   return (
     <div
       id="hero-section"
-      className="hero-container relative  w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] mx-auto mt-1 sm:mt-2 overflow-hidden"
+      className="hero-container relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] mx-auto mt-1 sm:mt-2 overflow-hidden"
     >
       {/* Background Video */}
       <motion.video
@@ -103,6 +103,7 @@ const HeroSection = () => {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
         className="absolute inset-0 w-full h-full object-cover"
+        aria-label="Background video showcasing sealing technology"
       >
         <source src="/assets/Homepage/Herosection/48342-454346532.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -268,10 +269,12 @@ const HeroSection = () => {
         className={`${
           isScrolled ? "fixed right-4 bottom-4 z-50" : "absolute right-4 bottom-4 z-10"
         } hidden lg:flex items-center gap-3 px-3 py-2 rounded-lg bg-[#F7C7BE] shadow-lg hover:bg-[#F0B1A7] transition-all`}
+        aria-label="WhatsApp us for quick solutions"
       >
         <div
           className="w-8 h-8 lg:w-8 lg:h-8 xl:w-10 xl:h-10 bg-cover bg-center"
           style={{ backgroundImage: `url('/assets/Homepage/Herosection/Whatsapp.png')` }}
+          aria-hidden="true"
         ></div>
         <span className="text-black font-bold text-sm lg:text-base font-['Monda']">
           WhatsApp Us for Quick Solutions!
@@ -289,14 +292,16 @@ const HeroSection = () => {
         className={`${
           isScrolled ? "fixed right-4 bottom-4 z-50" : "absolute right-4 bottom-4 z-10"
         } flex lg:hidden items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#25D366] shadow-lg hover:brightness-105 transition-all`}
+        aria-label="WhatsApp us"
       >
         <div
           className="w-5 h-5 sm:w-6 sm:h-6 bg-cover bg-center"
           style={{ backgroundImage: `url('/assets/Homepage/Herosection/Whatsapp.png')` }}
+          aria-hidden="true"
         ></div>
       </motion.a>
     </div>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;

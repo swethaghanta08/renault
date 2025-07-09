@@ -1,8 +1,26 @@
+
+import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Footer from "../home/Footer";
 import StandardCartridgeNavbar from "./Standardcatridgenavbar/StandardCatridgeNavbar";
 
 const Standardmainpage = () => {
+  // Preload hero and product images for SEO and fast loading
+  useEffect(() => {
+    const heroImages = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+    ];
+    const productImages = [
+      "image 46.png", "image 47.png", "image 48.png", "image 49.png", "image 50.png"
+    ].map(img => `/assets/Ourproducts/Standard/Standardmainpage/${img}`);
+    [...heroImages, ...productImages].forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
+
   return (
     <div>
       {/* ✅ SEO Tags */}
@@ -12,10 +30,15 @@ const Standardmainpage = () => {
           name="description"
           content="Explore a full range of standard mechanical seals and cartridge seals by Renault Engineers. Precision, durability, and custom sealing solutions for industry."
         />
-        <link
-          rel="canonical"
-          href="https://renaultengineers.com/our-products/standard-crtridge-seals"
-        />
+        <link rel="canonical" href="https://renaultengineers.com/our-products/standard-crtridge-seals" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Standard/Standardmainpage/image 46.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Standard/Standardmainpage/image 47.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Standard/Standardmainpage/image 48.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Standard/Standardmainpage/image 49.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Standard/Standardmainpage/image 50.png" />
       </Helmet>
 
       {/* Hero Section */}
@@ -123,6 +146,8 @@ const Standardmainpage = () => {
                   width: "100%",
                   height: "100%",
                 }}
+                aria-label={`Standard Cartridge Seals product image ${i + 1}`}
+                role="img"
               />
             ))}
           </div>
@@ -139,6 +164,8 @@ const Standardmainpage = () => {
                   width: "100%",
                   height: "100%",
                 }}
+                aria-label={`Standard Cartridge Seals product image ${i + 5}`}
+                role="img"
               />
             ))}
           </div>

@@ -1,13 +1,29 @@
-"use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import Mechanicalsealsnavbar from "../Mechanicalsealsnavbar/Mechanicalsealsnavbar"
 
+
 const U184 = () => {
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/Mechanicalseals/u184single/image1.png")
+
+  // Preload hero and product images for SEO and performance
+  useEffect(() => {
+    const imagesToPreload = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+      "/assets/Ourproducts/Mechanicalseals/u184single/image1.png",
+      "/assets/Ourproducts/Mechanicalseals/u184single/image2.png"
+    ]
+    imagesToPreload.forEach((src) => {
+      const img = new window.Image()
+      img.src = src
+    })
+  }, [])
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -76,6 +92,15 @@ const U184 = () => {
 
   return (
     <>
+      <Helmet>
+        <title>U184 Single & Dual Seals (Top Entry)/SeccoMix481 | Mechanical Seals | Renault</title>
+        <meta name="description" content="U184 Single & Dual Seals (Top Entry)/SeccoMix481: Dual seal, unbalanced, cartridge construction, for bottom entry vessels, food, pharma, chemical industry. Technical features, applications, materials, and standards." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Mechanicalseals/u184single/image1.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Mechanicalseals/u184single/image2.png" />
+      </Helmet>
       <section
         className="relative mx-auto w-full max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] h-[320px] md:h-[460px] lg:h-[600px] bg-cover bg-center flex items-center justify-center mt-[20px]"
         style={{
@@ -208,8 +233,9 @@ const U184 = () => {
               <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px]">
                 <img
                   src={mainImage || "/placeholder.svg"}
-                  alt="MTX Dual Seal"
+                  alt="U184 Single & Dual Seal main image"
                   className="w-full h-full object-contain"
+                  loading="eager"
                 />
               </div>
               <div className="flex gap-2 sm:gap-4">
@@ -221,8 +247,9 @@ const U184 = () => {
                   >
                     <img
                       src={thumb || "/placeholder.svg"}
-                      alt={`MTX Dual Seal thumbnail ${index + 1}`}
+                      alt={`U184 Single & Dual Seal thumbnail ${index + 1}`}
                       className="w-full h-full object-contain"
+                      loading="lazy"
                     />
                   </div>
                 ))}

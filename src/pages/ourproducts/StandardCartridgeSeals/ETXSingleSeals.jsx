@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Helmet } from "react-helmet"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Footer from "../../home/Footer"
 import StandardCartridgeNavbar from "../Standardcatridgenavbar/StandardCatridgeNavbar"
@@ -8,6 +9,22 @@ import StandardCartridgeNavbar from "../Standardcatridgenavbar/StandardCatridgeN
 const ETXSingleSeals = () => {
   const [activeTab, setActiveTab] = useState(null)
   const [mainImage, setMainImage] = useState("/assets/Ourproducts/Standard/image 51.png")
+
+  // Preload hero and product images for performance
+  useEffect(() => {
+    const imagesToPreload = [
+      "/assets/Contactpage/Herosection/heroimage-desktop.png",
+      "/assets/Contactpage/Herosection/heroimage-tab.png",
+      "/assets/Contactpage/Herosection/heroimage-phone.png",
+      "/assets/Ourproducts/Standard/image 51.png",
+      "/assets/Ourproducts/Standard/image 52.png",
+      "/assets/Ourproducts/Standard/image 53.png"
+    ]
+    imagesToPreload.forEach(src => {
+      const img = new window.Image()
+      img.src = src
+    })
+  }, [])
 
   const toggleTab = (tabId) => {
     setActiveTab(activeTab === tabId ? null : tabId)
@@ -73,6 +90,16 @@ const ETXSingleSeals = () => {
 
   return (
     <>
+      <Helmet>
+        <title>ETX Single Seals | Standard Cartridge Seals</title>
+        <meta name="description" content="ETX Single Seals: Single seal configuration, balanced design, cartridge construction, and more. Ideal for ANSI process pumps and various industrial applications." />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-desktop.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-tab.png" />
+        <link rel="preload" as="image" href="/assets/Contactpage/Herosection/heroimage-phone.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Standard/image 51.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Standard/image 52.png" />
+        <link rel="preload" as="image" href="/assets/Ourproducts/Standard/image 53.png" />
+      </Helmet>
       <section
         className="relative xl:max-w-[1440px] lg:max-w-[1024px] md:max-w-[768px] h-[320px] md:h-[460px] xl:w-[1440px] md:flex-shrink-0 mt-[20px] mx-auto w-full lg:w-[1024px] lg:h-[600px] bg-cover bg-center flex items-center justify-center"
         style={{
@@ -219,8 +246,9 @@ const ETXSingleSeals = () => {
               <div className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px]">
                 <img
                   src={mainImage || "/placeholder.svg"}
-                  alt="CTX ANSI Single Seal"
+                  alt="ETX Single Seal main product image"
                   className="w-full h-full object-contain"
+                  loading="eager"
                 />
               </div>
               <div className="flex gap-2 sm:gap-4">
@@ -232,8 +260,9 @@ const ETXSingleSeals = () => {
                   >
                     <img
                       src={thumb || "/placeholder.svg"}
-                      alt={`CTX ANSI Single Seal thumbnail ${index + 1}`}
+                      alt={`ETX Single Seal thumbnail ${index + 1}`}
                       className="w-full h-full object-contain"
+                      loading="lazy"
                     />
                   </div>
                 ))}

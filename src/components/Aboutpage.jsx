@@ -4,7 +4,6 @@ import FeatureSection from '../pages/about/Featuresection';
 import AboutEngineersSection from '../pages/about/Aboutengineers';
 import WhereDesignMeetsPerformance from '../pages/about/Wheredesignmetts';
 import Footer from '../pages/home/Footer';
-
 const Aboutpage = () => {
   return (
     <div>
@@ -16,7 +15,6 @@ const Aboutpage = () => {
         />
         <link rel="canonical" href="https://renaultengineers.com/about" />
       </Helmet>
-
       <AboutHeroSection />
       <FeatureSection />
       <AboutEngineersSection />
